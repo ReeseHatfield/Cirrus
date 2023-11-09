@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { backEndPoint} from '../../endpoints';
 
+const backEndPoint: string = "http://localhost:3001";
 
 const MyComponent = () => {
   const [data, setData] = useState<string | null>(null);
