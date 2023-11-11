@@ -1,17 +1,16 @@
 const fs = require('fs');
 import path from 'path';
+import { File } from "./File";
 
-export type File = {
-    name: string,
-    isDirectory: boolean
-};
+
+const rootDirName = "/backend/cirrus";
 
 export class FileSystem {
 
     private workingDirectory: File;
 
     constructor(){
-        this.workingDirectory = {name: "/backend/reese", isDirectory: true};
+        this.workingDirectory = {name: rootDirName, isDirectory: true};
     }
 
     getFilesInWorkingDir(): File[] {
@@ -44,18 +43,16 @@ export class FileSystem {
         let newPath;
     
         if (f.name === "..") {
-            // Move up one directory level, but check if it's already the root
-            if (this.workingDirectory.name !== "/") {
+            if (this.workingDirectory.name !== rootDirName) {
                 newPath = path.dirname(this.workingDirectory.name);
             } else {
                 console.log("Already at the root directory, cannot move up further.");
                 return false;
             }
         } else {
-            // Resolve the new path normally
+
             newPath = path.join(this.workingDirectory.name, f.name);
     
-            // Security Check: Prevent path traversal outside the intended directory structure
             if (!newPath.startsWith(this.workingDirectory.name)) {
                 console.error("Security Alert: Attempted path traversal attack.");
                 return false;
