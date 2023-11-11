@@ -3,12 +3,12 @@ import React from 'react';
 
 const backEndPoint: string = "http://localhost:3001";
 
-const MyComponent = () => {
+export const MyComponent = () => {
   const [data, setData] = useState<string | null>(null);
 
   useEffect(() => {
     // Use the full URL to your backend server
-    fetch(`${backEndPoint}/main`)
+    fetch(`${backEndPoint}/ls`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -26,9 +26,9 @@ const MyComponent = () => {
   
 
   return (
-    <div>
+    <>
       {data ? <div>{data}</div> : <div>Loading...</div>}
-    </div>
+    </>
   );
 };
 
