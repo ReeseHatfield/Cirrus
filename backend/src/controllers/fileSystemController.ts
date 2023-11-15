@@ -8,6 +8,7 @@ const StatusCodes = {
 };
 
 const fs = new FileSystem();
+
 export const getFilesInWorkingDir = (req: Request, res: Response) => {
     try{
         const responseFiles = fs.getFilesInWorkingDir();
@@ -17,6 +18,20 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ 
             message: 'Error retrieving files', 
             error: error.message 
+        });
+    }
+}
+
+export const makeDirectory = (req: Request, res: Response) => {
+
+    try{
+        const dirName = req.body.dirName;
+        const result = fs.makeDirectory(dirName);
+        res.json({ result });
+    } catch(error: any){
+        res.status(StatusCodes.BAD_REQUEST).json({
+            message: "Error creating directory",
+            error: error.message
         });
     }
 }

@@ -1,9 +1,10 @@
 const fs = require('fs');
-import path from 'path';
+import path, { dirname } from 'path';
 import { File } from "./File";
 
 
 const rootDirName = "/backend/cirrus";
+const specialDirectories = ['.', '..'];
 
 export class FileSystem {
 
@@ -75,8 +76,22 @@ export class FileSystem {
         }
     }
     
-    
-    
-    
+    makeDirectory(newDirName: string): boolean {
+        if(specialDirectories.includes(newDirName)){
+            console.log("Cannot create '.' or '..'")
+            return false;
+        }
+
+        const fullPath = path.join(this.workingDirectory.name, newDirName);
+
+        if(fs.existsSync(fullPath)){
+            console.log(`Cannot create directory because directory already named ${newDirName} exists`);
+            return false;
+        }
+
+        fs.mkdirSync(fullPath, { recusive: true });
+        return true;
+
+    }
     
 }
