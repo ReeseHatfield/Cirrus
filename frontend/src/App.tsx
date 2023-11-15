@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-const backEndPoint: string = "http://localhost:3001";
+const backEndPoint = "http://localhost:3001";
 
 export const MyComponent = () => {
   const [data, setData] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [inputText, setInputText] = useState("");
 
-  useEffect(() => {
-    // Use the full URL to your backend server
+  const fetchData = () => {
     fetch(`${backEndPoint}/ls`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        
-        return response.text(); // Use .json() if the response is in JSON format
+        return response.text(); 
       })
       .then(text => {
         setData(text);
@@ -22,12 +21,45 @@ export const MyComponent = () => {
       .catch(error => {
         console.error('Fetch error:', error);
       });
-  }, []); // The empty array means this effect runs once on mount
-  
+  };
+
+  const sendReq = useCallback(() => {
+    if (isSending) return;
+
+    setIsSending(true);
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: inputText })
+    };
+
+    fetch(`${backEndPoint}/cd`, requestOptions)
+      .then(() => {
+        fetchData(); // Fetch data again after sending request
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
+    
+  }, [isSending, inputText, fetchData]);
+
+  const handleTextChange = (event) => {
+    setInputText(event.target.value);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
       {data ? <div>{data}</div> : <div>Loading...</div>}
+      <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
+      <input type="text" value={inputText} onChange={handleTextChange} />
     </>
   );
 };
