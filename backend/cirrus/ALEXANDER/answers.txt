@@ -1,0 +1,61 @@
+1.
+
+fopen opens the file whose name is the string pointed to by the pathname argument in the manner specified by the mode argument, returning a FILE pointer upon successful completion and NULL otherwise.
+
+fclose flushes the stream pointed to by the stream argument and closes the underlying file descriptor, returning 0 upon successful completion and EOF otherwise.
+
+fread reads nmemb items of data, each size bytes long, from the stream pointed to by stream, storing them at the location given by ptr; and returns the number of items read.
+
+fwrite() writes nmemb items of data, each size bytes long, to the stream pointed to by stream, obtaining them from the location given by ptr; and returns the number of items written.
+
+fstat retrieves information about the file specified by the file descriptor fd, returning zero upon success and -1 otherwise.
+
+fscanf reads input from the stream pointer argument using a format argument consisting of a sequence of directives which describe how to process the sequence of input characters and returns the number of input items matched and assigned upon success and EOF otherwise.
+
+fprintf writes output to the given output stream, returning the number of characters printed upon success and a negative value otherwise.
+
+sprintf writes to the given character string str, returning the number of characters printed upon success and a negative value otherwise.
+
+2.
+
+Standard library routines: rename, remove, fgets, fputs, ferror
+
+System calls: open, write, close, fstat, read
+
+3. The statement "statBuf.st_size == nSectorsPerDisk * nBytesPerSector" must be verified to ensure that that the disk image file, which is guaranteed to exist at this point, is a valid simDisk. It is a valid simDisk only if its size is nSectorsPerDisk * nBytesPerSector. If it is not valid, a new valid disk image file satisfying the above criterion will be created.
+
+4.
+
+The char array "tfnm" in the "openDiskImage" function of the "simdisk.cpp" file could have been called "filename" or "diskname" to make its purpose more explicit.
+
+The pointer "p" in the "readSector" function of the "simdisk.cpp" file could have been called "dest" to explicitly indicate that it is the destination of the bytes being read from the disk image.
+
+The pointer "p" in the "writeSector" funtion of the "simdisk.cpp" file could have been called "src" to explicitly indicate that it is the source of the bytes being written to the disk image.
+
+The pointer "p" in the "appendOneBlock" function of the "file.cpp" file could have been called "src" to explicitly indicate that it is the source of the bytes being copied to "fileBuf".
+
+The unsigned int "iz" in the "appendOneBlock" function of the "file.cpp" file could have been called "sz" or "nBytes" to explicitly indicate that it is a size given in bytes.
+
+5. 
+
+write33file:
+/* 
+pre:: fs33leaf != 0, fs33leaf[0] != 0, unixFilePath != 0,
+ * unixFilePath[0] != 0;; 
+
+post:: Open a file named unixFilePath[],
+ * read in some number of bytes from it into a block which is then
+ * appended to a new file named fs33leaf[], and return the total
+ * number of bytes written (writes from a file in the Linux current
+ * working directory to a file in the root directory of the current
+ * file volume)  */
+
+read33file:
+/* 
+pre:: fs33leaf != 0, fs33leaf[0] != 0, unixFilePath != 0,
+ * unixFilePath[0] != 0;; 
+post:: Create a new file
+ * named unixFilePath[], write some number of bytes to it from the
+ * file named fs33leaf[], and return that number of bytes (writes
+ * from a file in the Linux current working directory to a file in
+ * the root directory of the current file volume)  */

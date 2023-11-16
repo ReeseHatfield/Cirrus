@@ -7,7 +7,7 @@ const StatusCodes = {
     INTERNAL_SERVER_ERROR: 500
 };
 
-const fs = new FileSystem();
+export const fs = new FileSystem();
 
 export const getFilesInWorkingDir = (req: Request, res: Response) => {
     try{
@@ -81,3 +81,18 @@ export const changeDirectory = (req: Request, res: Response) => {
     }
 
 }
+
+export const uploadFile = (req: Request, res: Response) => {
+    try {
+        // req.file contains the uploaded file info
+        const uploadedFile = req.file;
+
+        res.json({ message: 'File uploaded successfully', file: uploadedFile });
+    } catch (error: any) {
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            message: 'Error uploading file',
+            error: error.message
+        });
+    }
+};
+

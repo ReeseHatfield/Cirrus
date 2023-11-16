@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import FileUpload from './FileUpload';
 
 const backEndPoint = "http://localhost:3001";
 
@@ -60,6 +61,7 @@ export const MyComponent = () => {
       {data ? <div>{data}</div> : <div>Loading...</div>}
       <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
       <input type="text" value={inputText} onChange={handleTextChange} />
+      <FileUpload />
     </>
   );
 };
