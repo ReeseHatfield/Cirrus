@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import FileUpload from './FileUpload';
+import FileDownload from './FileDownload';
 
 const backEndPoint = "http://localhost:3001";
 
@@ -62,6 +63,7 @@ export const MyComponent = () => {
       <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
       <input type="text" value={inputText} onChange={handleTextChange} />
       <FileUpload />
+      <FileDownload />
     </>
   );
 };

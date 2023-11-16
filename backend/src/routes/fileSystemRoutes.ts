@@ -3,17 +3,8 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import * as fileSystemController from "../controllers/fileSystemController";
+import storage from '../config/multerConfig';
 
-// configure file upload storage to point to the current wd
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const workingDir = fileSystemController.fs.getWorkingDir().name;
-        cb(null, workingDir);
-    },
-    filename: (req, file, cb) => {
-      cb(null, file.originalname); // use the original file name
-    },
-});
 
 const upload = multer({storage: storage});
 
@@ -24,5 +15,6 @@ router.get('/getWorkingDir', fileSystemController.getWorkingDir);
 router.post('/cd', fileSystemController.changeDirectory);
 router.post('/mkdir', fileSystemController.makeDirectory);
 router.post('/upload', upload.single('file'), fileSystemController.uploadFile)
+router.get('/download/:filename', fileSystemController.downloadFile);
 
 export default router;

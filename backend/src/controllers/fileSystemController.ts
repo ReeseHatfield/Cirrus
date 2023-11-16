@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
 import { FileSystem } from "../models/FileSystem";
-import { File } from "../models/File";  
+import { File } from "../models/File"; 
+import path from 'path'; 
+import * as nodeFS from 'fs';
 
 const StatusCodes = {
     BAD_REQUEST: 400,
+    NOT_FOUND: 404,
     INTERNAL_SERVER_ERROR: 500
 };
 
@@ -82,6 +85,8 @@ export const changeDirectory = (req: Request, res: Response) => {
 
 }
 
+//File upload and download do not directly modify the FileSystem Wrapper
+
 export const uploadFile = (req: Request, res: Response) => {
     try {
         // req.file contains the uploaded file info
@@ -95,4 +100,24 @@ export const uploadFile = (req: Request, res: Response) => {
         });
     }
 };
+
+export const downloadFile = (req: Request, res: Response) => {
+    const filename = req.params.filename;
+    const workingDir = fs.getWorkingDir().name;
+    const filePath = path.join(workingDir, filename);
+
+    // check if the file exists in the working directory
+    if (nodeFS.existsSync(filePath)) {
+        res.download(filePath, filename, (err) => {
+            if (err) {
+                console.error(err);
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+                    .send('Error occurred during file download');
+            }
+        });
+    } else {
+        res.status(StatusCodes.NOT_FOUND).send('File not found');
+    }
+
+}
 
