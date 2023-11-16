@@ -50,3 +50,4 @@ Thumbs.db
 /config.js
 /config.json
 backend/cirrus/*
+!.gitRootPlaceholder
