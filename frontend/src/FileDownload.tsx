@@ -13,7 +13,7 @@ const FileDownload = () => {
             return;
         }
 
-        const response = await fetch(`http://localhost:3001/download/${fileName}`);
+        const response = await fetch(`/api/download/${fileName}`);
         if (response.ok) {
             const blob = await response.blob();
             const downloadUrl = window.URL.createObjectURL(blob);

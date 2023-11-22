@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import FileUpload from './FileUpload';
 import FileDownload from './FileDownload';
 
-const backEndPoint = "http://localhost:3001";
+const backEndPoint = "/api";
 
 export const MyComponent = () => {
   const [data, setData] = useState<string | null>(null);
