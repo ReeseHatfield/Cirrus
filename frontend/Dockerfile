@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-# default vite port :(
-EXPOSE 5173 
+EXPOSE 5173
 
 CMD [ "npm", "run", "dev"]
+
