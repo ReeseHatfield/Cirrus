@@ -12,3 +12,9 @@
   <br>
 </p>
 
+
+Need:
+- Static ip for server
+- new address that's not localhost
+- docker
+
