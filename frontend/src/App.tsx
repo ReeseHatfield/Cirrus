@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import FileUpload from './FileUpload';
 import FileDownload from './FileDownload';
 
-const backEndPoint = "/api";
+const BACK_END_POINT = "http://localhost:3001";
 
 export const MyComponent = () => {
   const [data, setData] = useState<string | null>(null);
@@ -10,7 +10,7 @@ export const MyComponent = () => {
   const [inputText, setInputText] = useState("");
 
   const fetchData = () => {
-    fetch(`${backEndPoint}/ls`)
+    fetch(`${BACK_END_POINT}/ls`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -36,7 +36,7 @@ export const MyComponent = () => {
       body: JSON.stringify({ name: inputText })
     };
 
-    fetch(`${backEndPoint}/cd`, requestOptions)
+    fetch(`${BACK_END_POINT}/cd`, requestOptions)
       .then(() => {
         fetchData(); // Fetch data again after sending request
       })

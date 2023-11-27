@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const BACK_END_POINT = "http://localhost:3001";
+
 const FileUpload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -17,7 +19,7 @@ const FileUpload = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('/api/upload', {
+            const response = await fetch(`${BACK_END_POINT}/upload`, {
                 method: 'POST',
                 body: formData,
             });
