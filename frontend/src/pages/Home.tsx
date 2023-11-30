@@ -62,8 +62,8 @@ export const Home = () => {
         {data ? <div>{data}</div> : <div>Loading...</div>}
         <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
         <input type="text" value={inputText} onChange={handleTextChange} />
-        <FileUpload />
-        <FileDownload />
+        <FileUpload backendPoint = {BACK_END_POINT} />
+        <FileDownload backendPoint={BACK_END_POINT} />
         </>
     );
 };

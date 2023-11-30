@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 
-const BACK_END_POINT = "http://localhost:3001";
 
-const FileDownload = () => {
+interface DownloadProps{
+    backendPoint: string
+}
+
+const FileDownload = ({ backendPoint }: DownloadProps ) => {
     const [fileName, setFileName] = useState('');
 
     const handleInputChange = (e) => {
@@ -15,7 +18,7 @@ const FileDownload = () => {
             return;
         }
 
-        const response = await fetch(`${BACK_END_POINT}/download/${fileName}`);
+        const response = await fetch(`${backendPoint}/download/${fileName}`);
         if (response.ok) {
             const blob = await response.blob();
             const downloadUrl = window.URL.createObjectURL(blob);

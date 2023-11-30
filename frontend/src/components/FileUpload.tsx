@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-const BACK_END_POINT = "http://localhost:3001";
+interface uploadProps{
+    backendPoint: string
+}
 
-const FileUpload = () => {
+const FileUpload = ({ backendPoint }: uploadProps) => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (event) => {
@@ -19,7 +21,7 @@ const FileUpload = () => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch(`${BACK_END_POINT}/upload`, {
+            const response = await fetch(`${backendPoint}/upload`, {
                 method: 'POST',
                 body: formData,
             });
