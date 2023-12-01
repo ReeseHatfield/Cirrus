@@ -18,6 +18,6 @@ Need:
 - new address that's not localhost
 - docker
 - Server (AWS or home server)
-- 
-- 
+- firewall configured
+- https://iconoir.com/
 
