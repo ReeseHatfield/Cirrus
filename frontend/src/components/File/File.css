@@ -1,0 +1,26 @@
+.file {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.file img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.file:hover {
+    background-color: #b9b9b9;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}

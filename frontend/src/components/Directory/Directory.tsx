@@ -20,7 +20,7 @@ const Directory = ({ data }: listProps) => {
         } catch (error) {
             console.error("Error parsing JSON data:", error);
         }
-    }, [data]); // Add data as a dependency
+    }, [data]); 
 
 
     return (
