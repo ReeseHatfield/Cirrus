@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import File from './File';
+import File from '../File/File';
 
 interface listProps {
     data: string;
 }
 
-const FileDisplay = ({ data }: listProps) => {
+const Directory = ({ data }: listProps) => {
     const [files, setFiles] = useState([]);
 
     useEffect(() => {
@@ -35,4 +35,4 @@ const FileDisplay = ({ data }: listProps) => {
         );
 }
 
-export default FileDisplay;
+export default Directory;

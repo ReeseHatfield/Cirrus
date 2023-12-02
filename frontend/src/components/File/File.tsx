@@ -1,8 +1,8 @@
 import React from 'react';
 // @ts-ignore
-import folderIcon from '../assets/folder.svg';
+import folderIcon from '../../assets/folder.svg';
 // @ts-ignore
-import fileIcon from '../assets/file.svg';
+import fileIcon from '../../assets/file.svg';
 
 interface FileProps {
     name: string;

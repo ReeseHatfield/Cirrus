@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import FileDisplay from './FileDisplay';
+import FileDisplay from '../Directory/Directory';
 
 interface displayProps{
     backendPoint: string;
 }
 
-const DisplayWrapper  = ({ backendPoint }: displayProps ) => {
+const Display  = ({ backendPoint }: displayProps ) => {
 
     const [data, setData] = useState<string>("");
     const [isSending, setIsSending] = useState(false);
@@ -72,4 +72,4 @@ const DisplayWrapper  = ({ backendPoint }: displayProps ) => {
     </>)
 }
 
-export default DisplayWrapper;
+export default Display;
