@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import FileDisplay from '../Directory/Directory';
+import Back from '../Back/Back';
 
 interface displayProps{
     backendPoint: string;
@@ -67,6 +68,7 @@ const Display  = ({ backendPoint }: displayProps ) => {
     return (
     <>
         <div><FileDisplay data={data}/></div>
+        <Back backendPoint={backendPoint} fetchData={fetchData} />
         <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
         <input type="text" value={inputText} onChange={handleTextChange} />
     </>)
