@@ -1,49 +1,50 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import FileDisplay from '../Directory/Directory';
+import Directory from '../Directory/Directory';
 import Back from '../Back/Back';
 
-interface displayProps{
+interface displayProps {
     backendPoint: string;
 }
 
-const Display  = ({ backendPoint }: displayProps ) => {
-
+const Display = ({ backendPoint }: displayProps) => {
     const [data, setData] = useState<string>("");
     const [isSending, setIsSending] = useState(false);
-    const [inputText, setInputText] = useState("");
+    const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
 
-
-
-    const fetchData = () => {
+    const fetchData = useCallback(() => {
         fetch(`${backendPoint}/ls`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text(); 
-        })
-        .then(text => {
-            setData(text);
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
-        });
-    };
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(text => {
+                setData(text);
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+    }, [backendPoint]);
 
-    const sendReq = useCallback(() => {
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
+
+    const changeDirectory = useCallback((directoryName: string) => {
         if (isSending) return;
 
         setIsSending(true);
 
         const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: inputText })
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: directoryName })
         };
 
         fetch(`${backendPoint}/cd`, requestOptions)
             .then(() => {
-                fetchData(); // Fetch data again after sending request
+                fetchData(); // Fetch data again after changing directory
             })
             .catch(error => {
                 console.error('Fetch error:', error);
@@ -51,27 +52,45 @@ const Display  = ({ backendPoint }: displayProps ) => {
             .finally(() => {
                 setIsSending(false);
             });
-        
-    }, [isSending, inputText, fetchData]);
+    }, [isSending, backendPoint, fetchData]);
 
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-
-    const handleTextChange = (event) => {
-        setInputText(event.target.value);
+    const handleFileClick = (name: string, isDirectory: boolean) => {
+        setSelectedFile({ name, isDirectory });
     };
 
+    const handleFileDoubleClick = async (name: string, isDirectory: boolean) => {
+        if (isDirectory) {
+            changeDirectory(name);
+        } else {
+            // Download file logic
+            const response = await fetch(`${backendPoint}/download/${name}`);
+            if (response.ok) {
+                const blob = await response.blob();
+                const downloadUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = name;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            } else {
+                alert('File not found or error downloading');
+            }
+        }
+    };
 
     return (
-    <>
-        <div><FileDisplay data={data}/></div>
-        <Back backendPoint={backendPoint} fetchData={fetchData} />
-        <input type="button" disabled={isSending} onClick={sendReq} value="Send Request" />
-        <input type="text" value={inputText} onChange={handleTextChange} />
-    </>)
+        <>
+            <Back backendPoint={backendPoint} fetchData={fetchData} />
+            <div>
+                <Directory 
+                    data={data} 
+                    onFileClick={handleFileClick} 
+                    onFileDoubleClick={handleFileDoubleClick} 
+                />
+            </div>
+        </>
+    );
 }
 
 export default Display;

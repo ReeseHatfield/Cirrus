@@ -3,9 +3,11 @@ import File from '../File/File';
 
 interface listProps {
     data: string;
+    onFileClick: (fileName: string, isDirectory: boolean) => void;
+    onFileDoubleClick: (fileName: string, isDirectory: boolean) => void;
 }
 
-const Directory = ({ data }: listProps) => {
+const Directory = ({ data, onFileClick, onFileDoubleClick }: listProps) => {
     const [files, setFiles] = useState([]);
 
     useEffect(() => {
@@ -22,17 +24,23 @@ const Directory = ({ data }: listProps) => {
         }
     }, [data]); 
 
-
     return (
-            <>
-                <h2>File List</h2>
-                <ul>
-                    {files.map((file: any, index: number) => (
-                        <File name={file.name} isDirectory={file.isDirectory} index={index}/>
-                    ))}
-                </ul>
-            </>
-        );
+        <>
+            <h2>File List</h2>
+            <ul>
+                {files.map((file: any, index) => (
+                    <File 
+                        key={index}
+                        name={file.name} 
+                        isDirectory={file.isDirectory} 
+                        index={index}
+                        onClick={onFileClick}
+                        onDoubleClick={onFileDoubleClick}
+                    />
+                ))}
+            </ul>
+        </>
+    );
 }
 
 export default Directory;
