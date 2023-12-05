@@ -29,7 +29,7 @@ const Display = ({ backendPoint }: displayProps) => {
 
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+    }, []);
 
     const changeDirectory = useCallback((directoryName: string) => {
         if (isSending) return;

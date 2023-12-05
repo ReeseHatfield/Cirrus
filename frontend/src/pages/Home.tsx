@@ -14,7 +14,7 @@ export const Home = () => {
                 <Display backendPoint={BACK_END_POINT} />
             </div>
             <FileUpload backendPoint={BACK_END_POINT} />
-            <FileDownload backendPoint={BACK_END_POINT} />
+            {/* <FileDownload backendPoint={BACK_END_POINT} /> */}
         </>
     );
 };

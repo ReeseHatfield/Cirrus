@@ -28,7 +28,8 @@ const Directory = ({ data, onFileClick, onFileDoubleClick }: listProps) => {
         <>
             <h2>File List</h2>
             <ul>
-                {files.map((file: any, index) => (
+                {
+                files.filter((file: any) => file.name != '.gitRootPlaceholder').map((file: any, index) => (
                     <File 
                         key={index}
                         name={file.name} 
