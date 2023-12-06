@@ -33,7 +33,7 @@ function authenticateHeaders(req: Request, res: Response, next: NextFunction){
   const username = req.headers['username'];
   const password = req.headers['password'];
 
-  
+  next();
 
 } 
 

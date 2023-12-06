@@ -21,6 +21,11 @@ Need:
 - firewall configured
 - https://iconoir.com/
 - add user with bash script + making it executable
+  - docker build -t admin .
+  - docker run admin
+- port map
+  - 3001 -> backend
+  - 5173 -> frontend
 
 
 
@@ -36,3 +41,6 @@ Todo:
   - display
   - login page
 - Highlighting on click
+
+
+
