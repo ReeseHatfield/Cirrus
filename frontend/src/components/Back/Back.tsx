@@ -22,8 +22,6 @@ const Back = ( {backendPoint, fetchData}: backProps) => {
             })
     }, [fetchData, backendPoint])
     
-
-
     useEffect(() => {
         fetchData();
     }, []);
