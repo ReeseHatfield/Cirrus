@@ -5,9 +5,10 @@ interface listProps {
     data: string;
     onFileClick: (fileName: string, isDirectory: boolean) => void;
     onFileDoubleClick: (fileName: string, isDirectory: boolean) => void;
+    sessionID: string
 }
 
-const Directory = ({ data, onFileClick, onFileDoubleClick }: listProps) => {
+const Directory = ({ data, onFileClick, onFileDoubleClick, sessionID }: listProps) => {
     const [files, setFiles] = useState([]);
 
     useEffect(() => {

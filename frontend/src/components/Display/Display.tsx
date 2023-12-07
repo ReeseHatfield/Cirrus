@@ -4,27 +4,34 @@ import Back from '../Back/Back';
 
 interface displayProps {
     backendPoint: string;
+    sessionID: string
 }
 
-const Display = ({ backendPoint }: displayProps) => {
+const Display = ({ backendPoint, sessionID }: displayProps) => {
     const [data, setData] = useState<string>("");
     const [isSending, setIsSending] = useState(false);
     const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
 
     const fetchData = useCallback(() => {
-        fetch(`${backendPoint}/ls`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(text => {
-                setData(text);
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-            });
+        fetch(`${backendPoint}/ls`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sessionID })
+        }).then(response => {
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(text => {
+            setData(text);
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+        });
     }, [backendPoint]);
 
     useEffect(() => {
@@ -63,7 +70,15 @@ const Display = ({ backendPoint }: displayProps) => {
             changeDirectory(name);
         } else {
             // Download file logic
-            const response = await fetch(`${backendPoint}/download/${name}`);
+            const response = await fetch(`${backendPoint}/download/${name}`, {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sessionID })
+            });
+
+            console.log(response);
             if (response.ok) {
                 const blob = await response.blob();
                 const downloadUrl = window.URL.createObjectURL(blob);
@@ -83,7 +98,8 @@ const Display = ({ backendPoint }: displayProps) => {
         <>
             <Back backendPoint={backendPoint} fetchData={fetchData} />
             <div>
-                <Directory 
+                <Directory
+                    sessionID={sessionID}
                     data={data} 
                     onFileClick={handleFileClick} 
                     onFileDoubleClick={handleFileDoubleClick} 

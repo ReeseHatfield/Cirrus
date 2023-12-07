@@ -2,19 +2,28 @@ import React, { useCallback, useEffect, useState } from 'react';
 import FileUpload from '../components/FileUpload/FileUpload';
 import FileDownload from '../components/FileDownload/FileDownload';
 import Display from '../components/Display/Display';
+import { useLocation } from 'react-router-dom';
 
-const BACK_END_POINT = "http://localhost:3001";
 
-export const Home = () => {
+interface homeProps {
+    backEndPoint: string
+}
+
+export const Home = ({ backEndPoint }: homeProps) => {
+
+    const { state } = useLocation();
+
+    const sessionID = state;
+
+    console.log(`session id (from backend): ${sessionID}`);
 
     //need to wrap this with a router at some point
     return (
         <>
             <div>
-                <Display backendPoint={BACK_END_POINT} />
+                <Display backendPoint={backEndPoint} sessionID={sessionID} />
             </div>
-            <FileUpload backendPoint={BACK_END_POINT} />
-            {/* <FileDownload backendPoint={BACK_END_POINT} /> */}
+            <FileUpload backendPoint={backEndPoint} />
         </>
     );
 };
