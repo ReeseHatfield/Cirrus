@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback,  } from 'react';
 import Directory from '../Directory/Directory';
 import Back from '../Back/Back';
+import { useNavigate } from 'react-router-dom';
 
 interface displayProps {
     backendPoint: string;
@@ -9,6 +10,7 @@ interface displayProps {
 
 const Display = ({ backendPoint, sessionID }: displayProps) => {
     const [data, setData] = useState<string>("");
+    const navigate = useNavigate()
     const [isSending, setIsSending] = useState(false);
     const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
 
@@ -21,10 +23,18 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
             body: JSON.stringify({ sessionID })
         }).then(response => {
 
+            if(response.status === 500){
+                alert("Session expired. Please sign in again...")
+
+                navigate("/login");
+            }
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
+
             return response.text();
+
         })
         .then(text => {
             setData(text);
@@ -32,10 +42,6 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
         .catch(error => {
             console.error('Fetch error:', error);
         });
-    }, [backendPoint]);
-
-    useEffect(() => {
-        fetchData();
     }, []);
 
     const changeDirectory = useCallback((directoryName: string) => {
@@ -59,7 +65,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
             .finally(() => {
                 setIsSending(false);
             });
-    }, [isSending, backendPoint, fetchData]);
+    }, []);
 
     const handleFileClick = (name: string, isDirectory: boolean) => {
         setSelectedFile({ name, isDirectory });

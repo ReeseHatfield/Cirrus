@@ -5,7 +5,6 @@ import StatusCodes from "./StatusCodes";
 import { verifySessionID } from "./userController";
 import path from 'path'; 
 import * as nodeFS from 'fs';
-import { log } from "console";
 
 
 export const fs = new FileSystem();
@@ -15,7 +14,6 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
 
         const sessionID = req.body.sessionID;
         if(!verifySessionID(sessionID)){
-            console.log("FAILED HERE");
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 message: "Failed to authenticate user"
         });
@@ -118,7 +116,6 @@ export const downloadFile = (req: Request, res: Response) => {
 
     const sessionID = req.body.sessionID;
     if(!verifySessionID(sessionID)){
-        console.log("FAILED HERE");
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             message: "Failed to authenticate user"
         });

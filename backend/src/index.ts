@@ -1,5 +1,6 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import fileSystemRoutes from './routes/fileSystemRoutes';
+import cron from 'node-cron';
 import fs from 'fs';
 
 const cors = require('cors');
@@ -13,7 +14,12 @@ declare global {
   var sessionID: string;
 }
 
+const resetSessionID = () => {
+  global.sessionID = "";
+}
+
 global.sessionID = ""; //set session id to be empty
+cron.schedule('*/1 * * * *', resetSessionID);
 
 app = config(app);
 app.use(fileSystemRoutes); // use routes from routes/fileSystemRoutes
@@ -33,5 +39,6 @@ function config(app: Application): Application {
 
   return app;
 }
+
 
 
