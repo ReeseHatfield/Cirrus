@@ -19,7 +19,7 @@ const resetSessionID = () => {
 }
 
 global.sessionID = ""; //set session id to be empty
-cron.schedule('*/1 * * * *', resetSessionID);
+cron.schedule('*/30 * * * *', resetSessionID);
 
 app = config(app);
 app.use(fileSystemRoutes); // use routes from routes/fileSystemRoutes

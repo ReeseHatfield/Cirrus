@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback,  } from 'react';
 import Directory from '../Directory/Directory';
 import Back from '../Back/Back';
 import { useNavigate } from 'react-router-dom';
+import MkDirModal from '../MkDirModal/MkDirModal';
 
 interface displayProps {
     backendPoint: string;
@@ -13,6 +14,9 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
     const navigate = useNavigate()
     const [isSending, setIsSending] = useState(false);
     const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
+
+    const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+    const [showMenu, setShowMenu] = useState(false);
 
     const fetchData = useCallback(() => {
         fetch(`${backendPoint}/ls`, {
@@ -100,8 +104,50 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
         }
     };
 
+    const handleContextMenu = (event) => {
+        event.preventDefault(); // Prevent default right-click menu
+        setMenuPosition({ x: event.pageX, y: event.pageY });
+        setShowMenu(true);
+    };
+
+    const handleDelete = async () => {
+        console.log("delete called!");
+        // try {
+        //     const response = await fetch('YOUR_BACKEND_URL', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             // Additional headers if needed
+        //         },
+        //         body: JSON.stringify({ }),
+        //     });
+        //     const data = await response.json();
+        //     console.log(data);
+        // } catch (error) {
+        //     console.error('Error sending POST request:', error);
+        // }
+        setShowMenu(false); // Hide the menu after sending the request
+    };
+
+    const handleRightClick = () => {
+        setShowMenu(false);
+    };
+
     return (
-        <>
+        <div onClick={handleRightClick} onContextMenu={handleContextMenu}>
+            
+            {showMenu && (
+                <div
+                    className="context-menu"
+                    style={{
+                        position: 'absolute',
+                        top: `${menuPosition.y}px`,
+                        left: `${menuPosition.x}px`
+                    }}
+                >
+                    <button onClick={handleDelete}>Delete</button>
+                </div>
+            )}
             <Back backendPoint={backendPoint} fetchData={fetchData} />
             <div>
                 <Directory
@@ -111,7 +157,8 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
                     onFileDoubleClick={handleFileDoubleClick} 
                 />
             </div>
-        </>
+            <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
+        </div>
     );
 }
 
