@@ -44,10 +44,16 @@ export const deleteFile = (req: Request, res: Response) => {
 
         const filename: string = req.body.name;
 
-        fs.deleteFile(filename);
-        res.status(StatusCodes.OK).json({
-            message: 'Success'
-        })
+        const success = fs.deleteFile(filename);
+        if(success){
+            res.status(StatusCodes.OK).json({
+                message: 'Success'
+            });
+        }
+        else{
+            throw Error;
+        }
+        
     }
     catch(error: any){
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

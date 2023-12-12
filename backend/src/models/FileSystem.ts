@@ -1,4 +1,4 @@
-const fs = require('fs');
+import * as fs from 'fs';
 import path, { dirname } from 'path';
 import { File } from "./File";
 
@@ -54,11 +54,17 @@ export class FileSystem {
     }
 
     deleteFile(filename: string): boolean {
+
         try{
             const fullPath = path.join(this.workingDirectory.name, filename);
-            fs.unlinkSync(fullPath);
-            
-            console.log("I was called!");
+            const stats = fs.statSync(fullPath);
+
+            if (stats.isDirectory()) {
+                fs.rmSync(fullPath, { recursive: true, force: true });
+            } else {
+                fs.unlinkSync(fullPath);
+            }
+
             return true;
         }
         catch(err: any){
@@ -132,7 +138,7 @@ export class FileSystem {
             return false;
         }
 
-        fs.mkdirSync(fullPath, { recusive: true });
+        fs.mkdirSync(fullPath, { recursive: true });
         return true;
 
     }
