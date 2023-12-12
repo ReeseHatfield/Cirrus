@@ -5,10 +5,11 @@ interface listProps {
     data: string;
     onFileClick: (fileName: string, isDirectory: boolean) => void;
     onFileDoubleClick: (fileName: string, isDirectory: boolean) => void;
+    backEndPoint: string
     sessionID: string
 }
 
-const Directory = ({ data, onFileClick, onFileDoubleClick, sessionID }: listProps) => {
+const Directory = ({ data, onFileClick, onFileDoubleClick, backEndPoint, sessionID, }: listProps) => {
     const [files, setFiles] = useState([]);
 
     useEffect(() => {
@@ -33,6 +34,8 @@ const Directory = ({ data, onFileClick, onFileDoubleClick, sessionID }: listProp
                 files.filter((file: any) => file.name != '.gitRootPlaceholder').map((file: any, index) => (
                     <File 
                         key={index}
+                        sessionId={sessionID}
+                        backendPoint={backEndPoint}
                         name={file.name} 
                         isDirectory={file.isDirectory} 
                         index={index}

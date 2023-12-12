@@ -16,6 +16,7 @@ router.post('/ls', fileSystemController.getFilesInWorkingDir);
 router.get('/getWorkingDir', fileSystemController.getWorkingDir);
 router.post('/cd', fileSystemController.changeDirectory);
 router.post('/mkdir', fileSystemController.makeDirectory);
+router.post('/rm', fileSystemController.deleteFile);
 router.post('/upload', upload.single('file'), fileSystemController.uploadFile)
 router.post('/download/:filename', fileSystemController.downloadFile);
 router.post('/auth', userController.authenticateUser);

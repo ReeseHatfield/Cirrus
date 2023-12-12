@@ -101,12 +101,15 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
         }
     };
 
+
+
     return (
         <>
             <Back backendPoint={backendPoint} fetchData={fetchData} />
             <div>
                 <Directory
                     sessionID={sessionID}
+                    backEndPoint={backendPoint}
                     data={data} 
                     onFileClick={handleFileClick} 
                     onFileDoubleClick={handleFileDoubleClick} 

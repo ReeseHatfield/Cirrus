@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { FileSystem } from "../models/FileSystem";
 import { File } from "../models/File"; 
-import StatusCodes from "./StatusCodes";
+import StatusCodes from "../config/StatusCodes";
 import { verifySessionID } from "./userController";
 import path from 'path'; 
 import * as nodeFS from 'fs';
@@ -16,8 +16,8 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
         if(!verifySessionID(sessionID)){
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 message: "Failed to authenticate user"
-        });
-    }
+            });
+        }
 
         const responseFiles = fs.getFilesInWorkingDir();
         res.json({ responseFiles });
@@ -27,6 +27,33 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
             message: 'Error retrieving files', 
             error: error.message 
         });
+    }
+}
+
+
+export const deleteFile = (req: Request, res: Response) => {
+    try{
+
+        console.log(JSON.stringify(req.body));
+        const sessionID = req.body.sessionId;
+        if(!verifySessionID(sessionID)){
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                message: "Failed to authenticate user"
+            });
+        }
+
+        const filename: string = req.body.name;
+
+        fs.deleteFile(filename);
+        res.status(StatusCodes.OK).json({
+            message: 'Success'
+        })
+    }
+    catch(error: any){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            message: 'Error deleting',
+            error: error.message
+        })
     }
 }
 

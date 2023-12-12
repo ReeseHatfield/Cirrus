@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import StatusCodes from "./StatusCodes";
+import StatusCodes from "../config/StatusCodes";
 import hash from "../security/hasher"
 const fs = require('fs');
 import crypto from 'crypto';
@@ -68,7 +68,7 @@ export const authenticateUser = (req: Request, res: Response) => {
 }
 
 export const verifySessionID = (idToCheck: string) => {
-    console.log(`idToCheck: ${idToCheck}`);
+    console.log(`idToCheck: ${JSON.stringify(idToCheck)}`);
     console.log(`sessionID: ${global.sessionID}`);
 
     return idToCheck === global.sessionID;

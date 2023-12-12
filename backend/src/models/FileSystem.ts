@@ -49,9 +49,25 @@ export class FileSystem {
      * The function "getWorkingDir" returns the working directory as a File object.
      * @returns The working directory as a File object.
      */
-    getWorkingDir(): File{
+    getWorkingDir(): File {
         return this.workingDirectory;
     }
+
+    deleteFile(filename: string): boolean {
+        try{
+            const fullPath = path.join(this.workingDirectory.name, filename);
+            fs.unlinkSync(fullPath);
+            
+            console.log("I was called!");
+            return true;
+        }
+        catch(err: any){
+            return false;
+        }
+        
+    }
+
+
 
     /**
      *  changeDirectory: hanges the current working directory to a specified

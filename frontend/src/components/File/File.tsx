@@ -11,11 +11,13 @@ interface FileProps {
     name: string;
     isDirectory: boolean;
     index: number;
+    sessionId: string;
+    backendPoint: string;
     onClick: (name: string, isDirectory: boolean) => void;
     onDoubleClick: (name: string, isDirectory: boolean) => void;
 };
 
-const File = ({ name, isDirectory, index, onClick, onDoubleClick }: FileProps) => {
+const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDoubleClick }: FileProps) => {
     const pathArr = name.split('/');
     name = pathArr[pathArr.length - 1];
 
@@ -30,8 +32,20 @@ const File = ({ name, isDirectory, index, onClick, onDoubleClick }: FileProps) =
     };
 
     const handleDelete = async () => {
-        console.log(`Delete me!`);
-        console.log(name)
+        try {
+            const response = await fetch(`${backendPoint}/rm`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ sessionId, name }),
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('Error sending POST request:', error);
+        }
+
         setShowMenu(false); // Hide the menu after sending the request
     };
 
