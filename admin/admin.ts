@@ -14,7 +14,7 @@ const options: any = {
 };
 
 /**
- * The function `adminConsole` creates a console interface that displays a menu and prompts the user
+ * `adminConsole` creates a console interface that displays a menu and prompts the user
  * for input, executing different options based on the input.
  */
 function adminConsole(){
@@ -46,7 +46,7 @@ function menu(){
 }
 
 /**
- * The function "exit" is used to terminate the current process with an exit code of 0.
+ * "exit" is used to terminate the current process with an exit code of 0.
  */
 function exit(){
     process.exit(0);
@@ -54,7 +54,7 @@ function exit(){
 
 
 /**
- * The function `addUser` adds a new user to a database by prompting for a username and password,
+ * `addUser` adds a new user to a database by prompting for a username and password,
  * hashing the password, and storing the user information in a JSON file.
  * @returns N/A
  */
@@ -92,7 +92,7 @@ function addUser(){
 }
 
 /**
- * The function removes a user from a database by finding their username and deleting their entry.
+ * removes a user from a database by finding their username and deleting their entry.
  * @returns N/A.
  */
 function removeUser() {

@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
+import Modal from 'react-modal';
 
 interface loginProps{
     backEndPoint: string
 }
 
-const LoginPage = ( {backEndPoint}: loginProps ) => {
+const LoginPage = ( {backEndPoint }: loginProps ) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate: NavigateFunction = useNavigate();
 
+    const [modelIsOpen, setModalIsOpen] = useState(false);
+
+    const closeModal = () => {setModalIsOpen(false)};
+    const openModal = () => {setModalIsOpen(true)};
+    
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -26,6 +32,7 @@ const LoginPage = ( {backEndPoint}: loginProps ) => {
             });
 
             if (!response.ok) {
+                setModalIsOpen(true);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
@@ -45,6 +52,12 @@ const LoginPage = ( {backEndPoint}: loginProps ) => {
     return (
         <>
             <h2>Login</h2>
+            <Modal 
+                isOpen={modelIsOpen}
+                onRequestClose={closeModal}
+            >
+                Unauthorized Username or Password!
+            </Modal>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username:</label>

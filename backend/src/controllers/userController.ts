@@ -30,6 +30,9 @@ export const authenticateUser = (req: Request, res: Response) => {
 
         if (index === -1) {
             console.log("User not found.");
+            res.status(StatusCodes.UNAUTHORIZED).json({
+                message: "User Unauthorized"
+            })
             return;
         }
         

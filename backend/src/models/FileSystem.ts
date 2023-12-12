@@ -18,9 +18,9 @@ export class FileSystem {
     }
 
     /**
-     * The function `getFilesInWorkingDir` retrieves all files and directories in the current working
+     * `getFilesInWorkingDir` retrieves all files and directories in the current working
      * directory and returns them as an array of `File` objects.
-     * @returns The function `getFilesInWorkingDir()` returns an array of `File` objects.
+     * @returns `getFilesInWorkingDir()` returns an array of `File` objects.
      */
     getFilesInWorkingDir(): File[] {
 
@@ -46,7 +46,7 @@ export class FileSystem {
 
 
     /**
-     * The function "getWorkingDir" returns the working directory as a File object.
+     * "getWorkingDir" returns the working directory as a File object.
      * @returns The working directory as a File object.
      */
     getWorkingDir(): File {
@@ -79,7 +79,7 @@ export class FileSystem {
      *  changeDirectory: hanges the current working directory to a specified
      * directory, while performing security checks and handling errors.
      * @param {File} f - The parameter `f` is of type `File`, which represents a file or directory.
-     * @returns The function `changeDirectory` returns a boolean value.
+     * @returns `changeDirectory` returns a boolean value.
      */
     changeDirectory(f: File): boolean {
         let newPath;
@@ -118,7 +118,7 @@ export class FileSystem {
     }
     
     /**
-     * The function creates a new directory with the given name in the current working directory,
+     * creates a new directory with the given name in the current working directory,
      * unless the name is already taken or is a special directory.
      * @param {string} newDirName - The newDirName parameter is a string that represents the name of
      * the new directory that you want to create.

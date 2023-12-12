@@ -31,10 +31,8 @@ Need:
 
 Todo:
 - Login:
-  - Add users with bash script w/ hashing + salting
-  - session passwords :(
-  - process in authHeaders
   - Login page
+  - 
 - Ignore .gitrootplaceholder
 - Stlying:
   - files
