@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import Modal from 'react-modal';
 
+import Button from '@mui/material/Button';
+
 interface loginProps{
     backEndPoint: string
 }
@@ -77,7 +79,7 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit">Login</button>
+                <Button type="submit" variant='contained'>Login</Button>
             </form>
         </>
     );
