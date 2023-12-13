@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import Modal from 'react-modal';
 
-import Button from '@mui/material/Button';
+import { TextField, Button, Typography } from '@mui/material';
 
 interface loginProps{
     backEndPoint: string
@@ -49,8 +49,6 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
         }
     };
 
-    //
-
     return (
         <>
             <h2>Login</h2>
@@ -62,17 +60,25 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
             </Modal>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="username">Username:</label>
-                    <input
+                    <Typography component="h2" variant="h5">
+                        Username
+                    </Typography>
+                    <TextField
+                        margin='normal'
                         type="text"
                         id="username"
+                        variant='outlined'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                    </div>
-                    <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
+                </div>
+                <div>
+                    <Typography component="h2" variant="h5">
+                        Password
+                    </Typography>
+                    <TextField
+                        margin='normal'
+                        variant='outlined'
                         type="password"
                         id="password"
                         value={password}
