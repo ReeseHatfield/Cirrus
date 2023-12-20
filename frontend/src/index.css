@@ -14,6 +14,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

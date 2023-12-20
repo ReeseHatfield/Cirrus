@@ -32,7 +32,7 @@ Need:
 Todo:
 - Login:
   - Login page
-  - 
+  - signout button
 - Ignore .gitrootplaceholder
 - Stlying:
   - files
