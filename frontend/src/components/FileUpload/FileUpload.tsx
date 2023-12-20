@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface uploadProps{
-    backendPoint: string
+    backendPoint: string;
+    sessionID: string;
 }
 
-const FileUpload = ({ backendPoint }: uploadProps) => {
-    const [selectedFile, setSelectedFile] = useState(null);
+const FileUpload = ({ backendPoint, sessionID }: uploadProps) => {
 
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
-    };
+    const navigate = useNavigate()
 
-    const handleUpload = async () => {
+    const handleUpload = async (event) => {
+        const selectedFile = event.target.files[0]
+
         if (!selectedFile) {
             alert('Please select a file first!');
             return;
@@ -36,13 +37,14 @@ const FileUpload = ({ backendPoint }: uploadProps) => {
             console.error('Error during file upload:', error);
             alert('Error during file upload: ' + error.message);
         }
+
+        window.location.reload(false);
     };
 
     return (
         <div>
             <h3>File Upload</h3>
-            <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>Upload File</button>
+            <input type="file" onChange={handleUpload} />
         </div>
     );
 };

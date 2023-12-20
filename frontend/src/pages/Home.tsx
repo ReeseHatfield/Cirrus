@@ -19,7 +19,7 @@ export const Home = ({ backEndPoint }: homeProps) => {
             <div>
                 <Display backendPoint={backEndPoint} sessionID={sessionID} />
             </div>
-            <FileUpload backendPoint={backEndPoint} />
+            <FileUpload backendPoint={backEndPoint} sessionID={sessionID} />
         </>
     );
 };

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 // @ts-ignore
 import folderIcon from '../../assets/folder.svg';
 // @ts-ignore
 import fileIcon from '../../assets/file.svg';
+
+import { useNavigate } from 'react-router-dom';
 
 import './File.css';
 
@@ -15,11 +17,14 @@ interface FileProps {
     backendPoint: string;
     onClick: (name: string, isDirectory: boolean) => void;
     onDoubleClick: (name: string, isDirectory: boolean) => void;
+    sessionID: string
 };
 
-const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDoubleClick }: FileProps) => {
+const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDoubleClick, sessionID }: FileProps) => {
     const pathArr = name.split('/');
     name = pathArr[pathArr.length - 1];
+
+    const navigate = useNavigate();
 
 
     const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
@@ -46,12 +51,16 @@ const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDou
             console.error('Error sending POST request:', error);
         }
 
-        setShowMenu(false); // Hide the menu after sending the request
+        setShowMenu(false); // hide menu
+
+        window.location.reload(false);
+
     };
 
     const handleClick = () => {
         setShowMenu(false);
     };
+
 
     return (
         <div onClick={handleClick} onContextMenu={handleContextMenu}>

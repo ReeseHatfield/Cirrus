@@ -44,6 +44,7 @@ const Directory = ({ data, onFileClick, onFileDoubleClick, backEndPoint, session
                         index={index}
                         onClick={onFileClick}
                         onDoubleClick={onFileDoubleClick}
+                        sessionID={sessionID}
                     />
                 ))}
             </ul>
