@@ -28,7 +28,7 @@ const Back = ({ backendPoint, fetchData }: backProps) => {
     }, []);
 
     return (
-        <Button variant='contained' type="button" onClick={cdParent}> Back </Button>
+        <button type="button" onClick={cdParent}> Back </button>
     )
 }
 
