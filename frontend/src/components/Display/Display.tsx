@@ -3,6 +3,7 @@ import Directory from '../Directory/Directory';
 import Back from '../Back/Back';
 import { useNavigate } from 'react-router-dom';
 import MkDirModal from '../MkDirModal/MkDirModal';
+import { Tree } from '../Tree/Tree';
 
 interface displayProps {
     backendPoint: string;
@@ -105,6 +106,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
 
     return (
         <>
+            <Tree backendPoint={backendPoint}></Tree>
             <Back backendPoint={backendPoint} fetchData={fetchData} />
             <div>
                 <Directory

@@ -3,8 +3,12 @@ import { FileSystem } from "../models/FileSystem";
 import { File } from "../models/File"; 
 import StatusCodes from "../config/StatusCodes";
 import { verifySessionID } from "./userController";
+import { exec } from "child_process";
+
 import path from 'path'; 
 import * as nodeFS from 'fs';
+import { stderr } from "process";
+
 
 
 export const fs = new FileSystem();
@@ -36,6 +40,32 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ 
             message: 'Error retrieving files', 
             error: error.message 
+        });
+    }
+}
+
+export const tree = (req: Request, res: Response) =>{
+    try{
+        
+        exec('tree cirrus', (err, stdout, stderr) =>{
+
+            if(err || stderr){
+                console.log("Error running tree command");
+                res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                    message: "Error running tree command",
+                })
+            }
+            
+
+            res.status(StatusCodes.OK).json({
+                stdout
+            })
+        })
+    }
+    catch(error: any){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            message: "Error getting tree view",
+            error: error.message
         });
     }
 }

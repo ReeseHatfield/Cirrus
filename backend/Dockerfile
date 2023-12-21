@@ -1,5 +1,8 @@
 FROM node:16-alpine 
 
+# # install tree command for file tree graph
+# RUN apt-get update && apt-get install -y tree
+
 WORKDIR /backend
 
 COPY package*.json ./
