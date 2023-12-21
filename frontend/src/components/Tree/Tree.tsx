@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 
 interface treeProps {
     backendPoint: string;
@@ -26,7 +26,8 @@ export const Tree = ({ backendPoint }: treeProps) => {
     
         })
         .then(text => {
-            setTreeData(text);
+            // get stdout from response
+            setTreeData(JSON.parse(text)["stdout"]);
         })
         .catch((err => {
             console.error('Fetch error:', err);
@@ -34,9 +35,17 @@ export const Tree = ({ backendPoint }: treeProps) => {
     },[])
 
 
-    
 
-    return (
-        <div>{treeData}</div>
-    )
+    const paragraphs = treeData.split('\n').map((line, index) => (
+
+        <Fragment key={index}>
+            {line}
+            <br/>
+        </Fragment>
+    ));
+
+    
+    return <div>{paragraphs}</div>;
+
+
 }

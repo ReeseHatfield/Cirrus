@@ -1,0 +1,5 @@
+.display{
+    display: flex;
+    align-items: center;
+    max-lines: 2;
+}

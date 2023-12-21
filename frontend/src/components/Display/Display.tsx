@@ -4,6 +4,9 @@ import Back from '../Back/Back';
 import { useNavigate } from 'react-router-dom';
 import MkDirModal from '../MkDirModal/MkDirModal';
 import { Tree } from '../Tree/Tree';
+import FileUpload from '../FileUpload/FileUpload';
+
+import './Display.css'
 
 interface displayProps {
     backendPoint: string;
@@ -105,20 +108,24 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
 
 
     return (
-        <>
+        <div className='display'>
             <Tree backendPoint={backendPoint}></Tree>
-            <Back backendPoint={backendPoint} fetchData={fetchData} />
             <div>
-                <Directory
-                    sessionID={sessionID}
-                    backEndPoint={backendPoint}
-                    data={data} 
-                    onFileClick={handleFileClick} 
-                    onFileDoubleClick={handleFileDoubleClick} 
-                />
+                <Back backendPoint={backendPoint} fetchData={fetchData} />
+                    <div>
+                        <Directory
+                            sessionID={sessionID}
+                            backEndPoint={backendPoint}
+                            data={data} 
+                            onFileClick={handleFileClick} 
+                            onFileDoubleClick={handleFileDoubleClick} 
+                        />
+                    </div>
+                <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
+                <FileUpload backendPoint={backendPoint} sessionID={sessionID} />
             </div>
-            <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
-        </>
+
+        </div>
     );
 }
 
