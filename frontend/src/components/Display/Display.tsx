@@ -112,8 +112,10 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
         <div className='display'>
             <Tree backendPoint={backendPoint}></Tree>
             <div>
-                <Back backendPoint={backendPoint} fetchData={fetchData} />
-                <Root backendPoint={backendPoint} fetchData={fetchData} />
+                <span className='bar'>
+                    <Back backendPoint={backendPoint} fetchData={fetchData} />
+                    <Root backendPoint={backendPoint} fetchData={fetchData} />
+                </span>
                     <div>
                         <Directory
                             sessionID={sessionID}
@@ -123,8 +125,10 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
                             onFileDoubleClick={handleFileDoubleClick} 
                         />
                     </div>
-                <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
-                <FileUpload backendPoint={backendPoint} sessionID={sessionID} />
+                <span className='bar'>    
+                    <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
+                    <FileUpload backendPoint={backendPoint} sessionID={sessionID} />
+                </span>
             </div>
 
         </div>

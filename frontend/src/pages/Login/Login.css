@@ -8,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     animation: fadeIn 1s ease-in-out;
+    z-index: 200;
 }
 
 @keyframes fadeIn {
@@ -16,7 +17,7 @@ body {
 }
 
 h2 {
-    color: #d40000; 
+    color: #ba0101; 
     font-size: 24px; 
     text-align: center;
     margin-bottom: 30px;
@@ -67,22 +68,23 @@ TextField {
     box-sizing: border-box; 
 }
 
-Button {
+.button, Button {
     width: 100%;
-    padding: 15px; 
-    margin-top: 25px; 
-    background-color: #d40000;
+    padding: 15px !important; 
+    margin-top: 25px !important; 
+    margin: 5px !important;
+    background-color: #970404 !important;
     color: white;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px !important; 
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     font-size: 16px; 
     font-weight: 600; 
 }
 
-Button:hover {
-    background-color: #bb0000; 
+.button:hover, Button:hover {
+    background-color: #bb0000 !important; 
     transform: scale(1.03); 
 }
 

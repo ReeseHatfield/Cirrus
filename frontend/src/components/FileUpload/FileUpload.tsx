@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { Button } from '@mui/material';
+
 interface uploadProps{
     backendPoint: string;
     sessionID: string;
@@ -42,10 +44,19 @@ const FileUpload = ({ backendPoint, sessionID }: uploadProps) => {
     };
 
     return (
-        <div>
-            <h3>File Upload</h3>
-            <input type="file" onChange={handleUpload} />
-        </div>
+
+        <Button
+            variant="contained"
+            component="label"
+            className="button"
+        >
+            Upload
+            <input 
+                type="file" 
+                onChange={handleUpload} 
+                style={{ display: 'none' }} // hide the input element, but leave as upload button
+            />
+        </Button>
     );
 };
 
