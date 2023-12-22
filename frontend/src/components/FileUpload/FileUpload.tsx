@@ -38,7 +38,7 @@ const FileUpload = ({ backendPoint, sessionID }: uploadProps) => {
             alert('Error during file upload: ' + error.message);
         }
 
-        window.location.reload(false);
+        window.location.reload();
     };
 
     return (

@@ -49,3 +49,6 @@ export const Tree = ({ backendPoint }: treeProps) => {
 
 
 }
+
+
+export default Tree

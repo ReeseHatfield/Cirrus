@@ -3,7 +3,8 @@ import Directory from '../Directory/Directory';
 import Back from '../Back/Back';
 import { useNavigate } from 'react-router-dom';
 import MkDirModal from '../MkDirModal/MkDirModal';
-import { Tree } from '../Tree/Tree';
+import Root from '../Root/Root';
+import Tree from '../Tree/Tree';
 import FileUpload from '../FileUpload/FileUpload';
 
 import './Display.css'
@@ -112,6 +113,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
             <Tree backendPoint={backendPoint}></Tree>
             <div>
                 <Back backendPoint={backendPoint} fetchData={fetchData} />
+                <Root backendPoint={backendPoint} fetchData={fetchData} />
                     <div>
                         <Directory
                             sessionID={sessionID}

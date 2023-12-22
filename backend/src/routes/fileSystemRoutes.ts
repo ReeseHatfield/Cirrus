@@ -7,7 +7,6 @@ import * as userController from "../controllers/userController";
 import storage from '../config/multerConfig';
 
 
-
 const upload = multer({storage: storage});
 
 export const router = Router();
@@ -21,5 +20,6 @@ router.get('/tree', fileSystemController.tree);
 router.post('/upload', upload.single('file'), fileSystemController.uploadFile)
 router.post('/download/:filename', fileSystemController.downloadFile);
 router.post('/auth', userController.authenticateUser);
+router.get('/cdRoot', fileSystemController.changeDirectoryToRoot);
 
 export default router;

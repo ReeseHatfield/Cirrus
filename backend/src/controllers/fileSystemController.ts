@@ -207,6 +207,22 @@ export const changeDirectory = (req: Request, res: Response) => {
 
 }
 
+export const changeDirectoryToRoot = (req: Request, res: Response) => {
+    try{
+        if(fs.changeDirToRoot()){
+            res.status(StatusCodes.OK).json({
+                message: "Successfully returned to root"
+            })
+        }
+    }
+    catch(err: any){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            error: err.message,
+            message: "Cannot cd to root"
+        });
+    }
+}
+
 //File upload and download do not directly modify the FileSystem Wrapper
 
 /**

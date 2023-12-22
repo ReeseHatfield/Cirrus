@@ -17,6 +17,24 @@ export class FileSystem {
         this.workingDirectory = {name: rootDirName, isDirectory: true};
     }
 
+
+    /**
+     * The function changes the working directory to the root directory and returns true if successful,
+     * otherwise it returns false and logs an error message.
+     * @returns a boolean value. If the directory is successfully changed to the root directory, it
+     * will return true. If there is an error, it will return false.
+     */
+    changeDirToRoot(): boolean {
+        try{
+            this.workingDirectory = { name: rootDirName, isDirectory: true };
+            return true;
+        }
+        catch(err: any){
+            console.error("Error changing directory");
+            return false;
+        }
+    }
+
     /**
      * `getFilesInWorkingDir` retrieves all files and directories in the current working
      * directory and returns them as an array of `File` objects.
