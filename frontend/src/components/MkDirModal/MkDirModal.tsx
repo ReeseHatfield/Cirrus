@@ -50,15 +50,16 @@ const MkDirModal = ({ backendPoint, fetchData }: mkDirModalProps) => {
             > New Folder
             </Button>
             <Modal
+
                 isOpen={isOpen}
                 onRequestClose={closeModal}
             >
-                <div>
+                <div className='folder-modal'>
                     <input 
                         type="text" 
                         value={dirName} 
                         onChange={handleInputChange} 
-                        placeholder="Enter file name" 
+                        placeholder="Enter new folder name" 
                     />
                     <button onClick={makeDirectory}>Add Folder</button>
                 </div>
