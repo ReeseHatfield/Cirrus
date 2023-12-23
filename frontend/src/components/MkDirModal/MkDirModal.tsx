@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal';
+import { Button } from '@mui/material';
 
 
 interface mkDirModalProps{
@@ -41,7 +42,13 @@ const MkDirModal = ({ backendPoint, fetchData }: mkDirModalProps) => {
     
     return (
         <>
-            <button onClick={openModal}>New Folder</button>
+            <Button 
+                type='button'
+                onClick={openModal}
+                variant='contained'
+                className='button'
+            > New Folder
+            </Button>
             <Modal
                 isOpen={isOpen}
                 onRequestClose={closeModal}

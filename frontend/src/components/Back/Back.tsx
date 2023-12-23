@@ -1,5 +1,5 @@
-import { Button } from '@mui/material';
 import React, { useCallback, useEffect } from 'react'
+import { Button } from '@mui/material';
 
 interface backProps {
     backendPoint: string;
@@ -28,7 +28,12 @@ const Back = ({ backendPoint, fetchData }: backProps) => {
     }, []);
 
     return (
-        <button type="button" onClick={cdParent}> Back </button>
+        <Button 
+            type="button" 
+            onClick={cdParent}
+            variant='contained'
+            className='button'
+        > Back </Button>
     )
 }
 

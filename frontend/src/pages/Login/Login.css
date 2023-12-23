@@ -81,6 +81,7 @@ TextField {
     transition: background-color 0.3s, transform 0.3s;
     font-size: 16px; 
     font-weight: 600; 
+    text-transform: 'none';
 }
 
 .button:hover, Button:hover {

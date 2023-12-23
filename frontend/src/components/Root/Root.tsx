@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-
+import { Button } from '@mui/material';
 
 interface rootProps {
     backendPoint: string;
@@ -27,7 +27,13 @@ const Root = ({ backendPoint, fetchData }: rootProps) => {
 
 
     return (
-        <button type='button' onClick={cdRoot}>Home</button>
+        <Button 
+            type='button' 
+            onClick={cdRoot}
+            variant='contained'
+            className='button'
+        >Home
+        </Button>
     )
 }
 

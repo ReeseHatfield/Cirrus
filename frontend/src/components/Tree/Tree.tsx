@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react'
 
+import './Tree.css'
+
 interface treeProps {
     backendPoint: string;
 }
@@ -45,7 +47,7 @@ export const Tree = ({ backendPoint }: treeProps) => {
     ));
 
     
-    return <div>{paragraphs}</div>;
+    return <div className='tree'>{paragraphs}</div>;
 
 
 }
