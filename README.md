@@ -55,6 +55,13 @@ To actually run the Cirrus on your server, you'll first need to clone the repo w
 
 `git clone https://github.com/ReeseHatfield/Cirrus.git`
 
+Once the repo has been cloned, you can cd into the directory and run 
+`docker compose build` and `docker compose up` to build and start the server.
+
+When you begin, the default username and password are `Admin` and `admin` To fix this and add other users, we can go into the /admin directory. Run `sudo admin.sh` inside the admin folder. From here, you can add your own custom users and remove `Admin`
+</br>
+</br>
+Note: In the current version, you need Node and Typescript installed locally for this to work. In a future version, I hope to have this run in a docker container to "eliminate" these dependencies. I ran into trouble getting stdin with node while inside a container. If someone wants to make a PR with this fix, feel free, contributions are always welcome.
 
 
 
