@@ -30,7 +30,6 @@ yarn-error.log*
 *.sln
 *.sw?
 
-backend/src/security/database.json
 
 # Operating System generated files
 .DS_Store
@@ -48,8 +47,8 @@ Thumbs.db
 /.vite/
 /vite.config.ts.build.js
 
-# Optional: Exclude specific config files that may contain sensitive information
 /config.js
 /config.json
 backend/cirrus/*
 !.gitRootPlaceholder
+backend/src/security/database.json
