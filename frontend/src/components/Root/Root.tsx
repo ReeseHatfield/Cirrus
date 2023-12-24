@@ -14,7 +14,7 @@ const Root = ({ backendPoint, fetchData }: rootProps) => {
             headers: {'Content-Type': 'application/json'},
         }
 
-        fetch(`${backendPoint}/cdRoot`, reqOptions)
+        fetch(`${backendPoint}/api/cdRoot`, reqOptions)
             .then(() => {
                 fetchData();
             })

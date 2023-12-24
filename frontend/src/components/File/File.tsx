@@ -38,7 +38,7 @@ const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDou
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`${backendPoint}/rm`, {
+            const response = await fetch(`${backendPoint}/api/rm`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDou
 
         setShowMenu(false); // hide menu
 
-        window.location.reload(false);
+        window.location.reload();
 
     };
 

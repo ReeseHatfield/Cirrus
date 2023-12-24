@@ -18,7 +18,7 @@ const FileDownload = ({ backendPoint }: DownloadProps ) => {
             return;
         }
 
-        const response = await fetch(`${backendPoint}/download/${fileName}`);
+        const response = await fetch(`${backendPoint}/api/download/${fileName}`);
         if (response.ok) {
             const blob = await response.blob();
             const downloadUrl = window.URL.createObjectURL(blob);

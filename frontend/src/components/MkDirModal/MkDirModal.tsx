@@ -31,7 +31,7 @@ const MkDirModal = ({ backendPoint, fetchData }: mkDirModalProps) => {
             body: JSON.stringify({ dirName: `${dirName}`})
         };
 
-        const response = fetch(`${backendPoint}/mkdir`, reqOptions);
+        const response = fetch(`${backendPoint}/api/mkdir`, reqOptions);
         console.log(`Directory made?=${response}`);
 
         closeModal();

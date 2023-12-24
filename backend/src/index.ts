@@ -22,7 +22,7 @@ global.sessionID = ""; //set session id to be empty
 cron.schedule('*/30 * * * *', resetSessionID);
 
 app = config(app);
-app.use(fileSystemRoutes); // use routes from routes/fileSystemRoutes
+app.use("/api",fileSystemRoutes); // use routes from routes/fileSystemRoutes
 
 
 app.listen(port, () => {

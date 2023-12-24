@@ -24,7 +24,7 @@ const FileUpload = ({ backendPoint, sessionID }: uploadProps) => {
         formData.append('file', selectedFile);
 
         try {
-            const response = await fetch(`${backendPoint}/upload`, {
+            const response = await fetch(`${backendPoint}/api/upload`, {
                 method: 'POST',
                 body: formData,
             });

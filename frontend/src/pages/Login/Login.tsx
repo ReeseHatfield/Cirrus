@@ -24,7 +24,7 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`${backEndPoint}/auth`, {
+            const response = await fetch(`${backEndPoint}/api/auth`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

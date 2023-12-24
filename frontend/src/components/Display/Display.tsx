@@ -21,7 +21,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
     const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
 
     const fetchData = useCallback(() => {
-        fetch(`${backendPoint}/ls`, {
+        fetch(`${backendPoint}/api/ls`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
             body: JSON.stringify({ name: directoryName })
         };
 
-        fetch(`${backendPoint}/cd`, requestOptions)
+        fetch(`${backendPoint}/api/cd`, requestOptions)
             .then(() => {
                 fetchData(); // Fetch data again after changing directory
             })
@@ -82,7 +82,7 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
             changeDirectory(name);
         } else {
             // Download file logic
-            const response = await fetch(`${backendPoint}/download/${name}`, {
+            const response = await fetch(`${backendPoint}/api/download/${name}`, {
                 method: 'POST', 
                 headers: {
                     'Content-Type': 'application/json'

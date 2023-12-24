@@ -17,7 +17,7 @@ const Back = ({ backendPoint, fetchData }: backProps) => {
         };
 
 
-        fetch(`${backendPoint}/cd`, reqOptions)
+        fetch(`${backendPoint}/api/cd`, reqOptions)
             .then(() => {
                 fetchData();
             })

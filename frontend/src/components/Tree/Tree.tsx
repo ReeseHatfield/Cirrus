@@ -12,7 +12,7 @@ export const Tree = ({ backendPoint }: treeProps) => {
 
 
     useEffect(() =>{
-        fetch(`${backendPoint}/tree`, {
+        fetch(`${backendPoint}/api/tree`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
