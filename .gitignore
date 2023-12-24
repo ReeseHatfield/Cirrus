@@ -51,4 +51,3 @@ Thumbs.db
 /config.json
 backend/cirrus/*
 !.gitRootPlaceholder
-backend/src/security/database.json
