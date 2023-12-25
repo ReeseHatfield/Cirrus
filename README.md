@@ -45,7 +45,7 @@ To get public access to your server through the internet, you'll need configure 
 3. Allow HTTP and HTTPS: `sudo ufw allow 80/tcp` and `sudo ufw allow 443/tcp`
 4. Check status: `sudo ufw status`
 
-When your check the status, it should show the ports we need as open.
+When your check the status, it should show the ports we need as open. A full map of the ports Cirrus uses can be found [Here](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md#port-mapping-table)
 
 
 ### Docker
@@ -68,7 +68,7 @@ When you begin, the default username and password are `Admin` and `admin` To fix
 Note: In the current version, you need Node and Typescript installed locally for this to work. In a future version, I hope to have this run in a docker container to "eliminate" these dependencies. I ran into trouble getting stdin with node while inside a container. If someone wants to make a PR with this fix, feel free, contributions are always welcome. 
 
 ## Visiting the server
-To test if the server is running, you can navigate to `localhost:5173`. To access your Cirrus from another device, you'll need the server's public IP address. This can be obtained using `curl api.ipify.org`. (A server port map can be viewed here) Visit this IP in any web browser to access the Cirrus UI. 
+To test if the server is running, you can navigate to `localhost:5173`. To access your Cirrus from another device, you'll need the server's public IP address. This can be obtained using `curl api.ipify.org`. (A server port map can be viewed [here](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md#port-mapping-table)) Visit this IP in any web browser to access the Cirrus UI. 
 
 [Screenshots and stuff here]
 
