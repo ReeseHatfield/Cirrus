@@ -31,7 +31,7 @@ const File = ({ name, isDirectory, index,sessionId, backendPoint, onClick, onDou
     const [showMenu, setShowMenu] = useState(false);
 
     const handleContextMenu = (event) => {
-        event.preventDefault(); // Prevent default right-click menu
+        event.preventDefault(); // prevent default right-click menu
         setMenuPosition({ x: event.pageX, y: event.pageY });
         setShowMenu(true);
     };

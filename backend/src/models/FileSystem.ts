@@ -10,20 +10,11 @@ export class FileSystem {
 
     private workingDirectory: File;
 
-    /**
-     * The constructor initializes the working directory with a root directory name.
-     */
     constructor(){
         this.workingDirectory = {name: rootDirName, isDirectory: true};
     }
 
 
-    /**
-     * The function changes the working directory to the root directory and returns true if successful,
-     * otherwise it returns false and logs an error message.
-     * @returns a boolean value. If the directory is successfully changed to the root directory, it
-     * will return true. If there is an error, it will return false.
-     */
     changeDirToRoot(): boolean {
         try{
             this.workingDirectory = { name: rootDirName, isDirectory: true };
@@ -35,11 +26,6 @@ export class FileSystem {
         }
     }
 
-    /**
-     * `getFilesInWorkingDir` retrieves all files and directories in the current working
-     * directory and returns them as an array of `File` objects.
-     * @returns `getFilesInWorkingDir()` returns an array of `File` objects.
-     */
     getFilesInWorkingDir(): File[] {
 
         console.log(`wd: ${JSON.stringify(this.workingDirectory)}`);
@@ -63,10 +49,6 @@ export class FileSystem {
     }
 
 
-    /**
-     * "getWorkingDir" returns the working directory as a File object.
-     * @returns The working directory as a File object.
-     */
     getWorkingDir(): File {
         return this.workingDirectory;
     }
@@ -91,14 +73,6 @@ export class FileSystem {
         
     }
 
-
-
-    /**
-     *  changeDirectory: hanges the current working directory to a specified
-     * directory, while performing security checks and handling errors.
-     * @param {File} f - The parameter `f` is of type `File`, which represents a file or directory.
-     * @returns `changeDirectory` returns a boolean value.
-     */
     changeDirectory(f: File): boolean {
         let newPath;
     
@@ -134,15 +108,7 @@ export class FileSystem {
             return false;
         }
     }
-    
-    /**
-     * creates a new directory with the given name in the current working directory,
-     * unless the name is already taken or is a special directory.
-     * @param {string} newDirName - The newDirName parameter is a string that represents the name of
-     * the new directory that you want to create.
-     * @returns a boolean value. It returns true if the directory is successfully created, and false if
-     * it is not.
-     */
+
     makeDirectory(newDirName: string): boolean {
         if(specialDirectories.includes(newDirName)){
             console.log("Cannot create '.' or '..'")
