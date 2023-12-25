@@ -74,24 +74,15 @@ To test if the server is running, you can navigate to `localhost:5173`. To acces
 
 Through the UI, you can upload and download files from your server, all facilitated by a user-friendly web-based GUI, eliminating the need for SSH or other third-party software.
 
-For further guides, questions, and answers, and more information, see [Usage Link](#).
 
+## Usage
+For further guides, questions, and answers, and more information, see [Usage](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md).
 
+## Credits and Contributors
+All contributors and credits on the project can be found at [Credits](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Credits.md)
 
+## Version History
 
-
-Need:
-- new address that's not localhost
-- docker
-- Server (AWS or home server)
-- firewall configured
-- https://iconoir.com/
-- add user with bash script + making it executable
-  - docker build -t admin .
-  - docker run admin
-- port map
-  - 3001 -> backend
-  - 5173 -> frontend
-
+Detailed release and version history can be found at [Changes](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Changes.md)
 
 
