@@ -68,7 +68,7 @@ When you begin, the default username and password are `Admin` and `admin` To fix
 Note: In the current version, you need Node and Typescript installed locally for this to work. In a future version, I hope to have this run in a docker container to "eliminate" these dependencies. I ran into trouble getting stdin with node while inside a container. If someone wants to make a PR with this fix, feel free, contributions are always welcome. 
 
 ## Visiting the server
-To test if the server is running, you can navigate to `localhost:5173`. To access your Cirrus from another device, you'll need the server's public IP address. This can be obtained using `curl api.ipify.org`. (A server port map can be viewed here) Visit this IP in any web browser to access the Cirrus UI. 
+To test if the server is running, you can navigate to `localhost:5173`. To access your Cirrus from another device, you'll need the server's public IP address. This can be obtained using `curl api.ipify.org`. (A server port map can be viewed [here](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md#port-mapping-table)) Visit this IP in any web browser to access the Cirrus UI. 
 
 [Screenshots and stuff here]
 
