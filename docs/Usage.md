@@ -40,3 +40,11 @@ This table outlines the port mappings for Cirrus
 | Nginx     | 80            | 80            | TCP      | Nginx server routing `/api/` to backend and `/` to frontend |
 
 *Note: Ports are mapped for both internal and external access. [Nginx](https://github.com/ReeseHatfield/Cirrus/blob/main/nginx.conf) handles routing to the appropriate service based on the request URL. You could change this if this conflicts with anything else on your server if need be*
+
+
+
+## How can I know that me data is secure?
+
+At the end of the day, your trusting some random developer's on github. You can look through the code yourself if you do not trust me (you probably shouldn't trust random people on the internet).
+
+Passwords added via administrator console are both hashed and salted when before they are stored locally. So even if your server were to get breached, an attacker would not be able to know your password. Cirrus uses SHA256 hashing algorithm to hash your passwords. However, if you do not set up HTTPS on port 443 externally, they will be sent plaintext OTA.
