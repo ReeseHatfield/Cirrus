@@ -45,7 +45,7 @@ To get public access to your server through the internet, you'll need configure 
 3. Allow HTTP and HTTPS: `sudo ufw allow 80/tcp` and `sudo ufw allow 443/tcp`
 4. Check status: `sudo ufw status`
 
-When your check the status, it should show the ports we need as open.
+When your check the status, it should show the ports we need as open. A full map of the ports Cirrus uses can be found [Here](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md#port-mapping-table)
 
 
 ### Docker
