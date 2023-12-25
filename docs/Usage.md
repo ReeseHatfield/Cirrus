@@ -38,6 +38,7 @@ This table outlines the port mappings for Cirrus
 | Backend   | 3001          | 3001          | TCP      | Backend service, accessible directly for development     |
 | Frontend  | 5173          | 5173          | TCP      | Frontend service, accessible directly for development    |
 | Nginx     | 80            | 80            | TCP      | Nginx server routing `/api/` to backend and `/` to frontend |
+| Nginx (optional) | 443    |443            | TCP      | Same as port 80, but supports HTTPS|
 
 *Note: Ports are mapped for both internal and external access. [Nginx](https://github.com/ReeseHatfield/Cirrus/blob/main/nginx.conf) handles routing to the appropriate service based on the request URL. You could change this if this conflicts with anything else on your server if need be*
 
