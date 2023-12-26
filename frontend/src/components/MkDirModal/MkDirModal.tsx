@@ -34,9 +34,11 @@ const MkDirModal = ({ backendPoint, fetchData }: mkDirModalProps) => {
         const response = fetch(`${backendPoint}/api/mkdir`, reqOptions);
         console.log(`Directory made?=${response}`);
 
-        closeModal();
-        
-        fetchData();
+        response.then(()=>{
+            closeModal();
+            fetchData();
+            window.location.reload();
+        });
     }
 
     
