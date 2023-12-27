@@ -1,4 +1,5 @@
-const readline = require('readline-sync');
+const ps = require('prompt-sync');
+const prompt = ps();
 const fs = require('fs');
 
 import hash from "../backend/src/security/hasher";
@@ -21,7 +22,7 @@ function adminConsole(){
 
     while(true){
         menu();
-        const input = readline.question("Input: ");
+        const input = prompt("Input: ");
         try{
             options[input]();
         } catch (err){
@@ -61,8 +62,8 @@ function exit(){
 function addUser(){
     console.log("Adding user...");
 
-    const username: string = readline.question("Username: ");
-    const password: string = readline.question("Password: ");
+    const username: string = prompt("Username: ");
+    const password: string = prompt("Password: ");
 
     const result: string[] = hash(password);
 
@@ -98,7 +99,7 @@ function addUser(){
 function removeUser() {
     console.log("Removing user...");
 
-    const username: string = readline.question("Enter username to remove: ");
+    const username: string = prompt("Enter username to remove: ");
 
     let users: any = JSON.parse(database);
 

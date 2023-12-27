@@ -34,3 +34,12 @@ services:
       - frontend
       - backend
     restart: unless-stopped
+
+  redis:
+    build: ./redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    restart: unless-stopped

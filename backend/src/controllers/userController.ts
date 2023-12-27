@@ -5,18 +5,6 @@ const fs = require('fs');
 import crypto from 'crypto';
 import { error } from "console";
 
-/**
- * `authenticateUser`: used to authenticate a user by comparing their provided username
- * and password with the stored credentials in a database.
- * @param {Request} req - The `req` parameter is an object that represents the HTTP request made by the
- * client. It contains information such as the request headers, request body, request method, and
- * request URL.
- * @param {Response} res - The `res` parameter is the response object that is used to send the response
- * back to the client. It contains methods and properties that allow you to set the status code,
- * headers, and send the response body. In this code, it is used to send the authentication result back
- * to the client by
- * @returns a response object with a status code and a JSON object containing a message.
- */
 export const authenticateUser = (req: Request, res: Response) => {
     // TODO: move into model
     try{
