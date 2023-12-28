@@ -1,11 +1,12 @@
-FROM node:16-alpine
+FROM python:3.9
 
-WORKDIR /admin
+COPY requirements.txt .
 
-COPY package*.json ./
+RUN pip install -r requirements.txt
 
-RUN npm install
+# 6379 -> deafult redis server port
+EXPOSE 6379
 
 COPY . .
 
-CMD ["sudo", "./admin.sh"]
+CMD ["python", "admin_cli.py"]

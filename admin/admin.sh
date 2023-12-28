@@ -5,14 +5,15 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-npm install
 
 echo "Starting admin console..."
 
-{
-    npx tsx admin.ts
-} || {
-    echo "Error: you might not have node installed"
-}
+
+# run in interact mode for cli
+docker build -t admin-cli .
+
+# run in interactivity mode
+# 6380 bc 6379 already runs redis on "host"
+docker run -it -p 6380:6379 admin-cli
 
 
