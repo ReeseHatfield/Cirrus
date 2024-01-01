@@ -7,20 +7,37 @@ def add_user():
 def remove_user():
     print("removiing user")
 
+def exit_cli():
+    exit()
+
 func_table = {
     1: list_users,
     2: add_user,
     3: remove_user,
-    9: lambda : exit(0)
+    9: exit_cli,
 }
+
+
+def format_func_name(dunder_name):
+    words = dunder_name.split('_')
+        
+    capital_first_letter = words[0][0].upper()
+
+    func_name = f"{capital_first_letter}{words[0][1:]}"
+
+    for word in words[1:]:
+        func_name += ' ' + word
+
+    return func_name
 
 
 def print_menu():
 
-    print("1: List Users")
-    print("2: Add User")
-    print("3: Remove User")
-    print("9: Exit")
+    for index, func in enumerate(func_table.values()):
+        name = format_func_name(func.__name__)
+        print(f"{index + 1}: {name}") # + 1 to account for 0
+
+
 
 def main():
     print("Welcome to the Cirrus Administrator Console!")
