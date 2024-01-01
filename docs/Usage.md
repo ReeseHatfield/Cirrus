@@ -29,6 +29,11 @@ The process of confgiuring a DDNS depends widely on the service used. Refer to t
 Yes, it is possible to use Cirrus without a static IP or DDNS service. The big problem here is that the public IP address of you server will change over time. This is the IP you would type into your browser to access the server. In the future, I would really like to integrate a service that can be used to query the IP of your server, or report the most recent to an easily accessible format. (Maybe a script that gets it and automatically launches it in your browser?) I think anyone with some coding ability could probably implement a solution for this, but something like this would be necessary to run Cirrus on a server for a long period of time. 
 
 
+### When I run the CLI, I get `=> ERROR [internal] load metadata for docker.io/library/python:3.7`?
+This is an issue with docker setup, it is a common problem with Apple Silicon. Try restarting the docker deamon.
+If that doesn't work, open the file `~/.docker/config.json` and change the `"credsStore": "desktop.exe"` to `"credStore": "desktop.exe"`, just remove the `s`. I found this solution from [this](https://stackoverflow.com/a/71665244) Stack Overflow answer
+
+
 ## Port Mapping Table
 
 This table outlines the port mappings for Cirrus
