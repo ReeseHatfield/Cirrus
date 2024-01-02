@@ -2,7 +2,7 @@ from CLI.controllers import redis_controller
 import getpass
 
 def list_users():
-    print(redis_controller.get_users())
+    print(redis_controller.get_all_users())
 
 def add_user():
     user_name = input("What is the user's name? ")
@@ -11,8 +11,12 @@ def add_user():
     redis_controller.add_user(user_name, pass_word)
 
 def remove_user():
-    user_name = input("What is the name of the user that you would like to remove?")
+    user_name = input("What is the name of the user that you would like to remove? ")
     redis_controller.delete_user(user_name)
+
+def get_user_info():
+    user_name = input("What is the name of the user? ")
+    print(redis_controller.get_user(user_name))
 
 def exit_cli():
     exit()
@@ -21,7 +25,8 @@ func_table = {
     1: list_users,
     2: add_user,
     3: remove_user,
-    4: exit_cli,
+    4: get_user_info,
+    5: exit_cli,
 }
 
 
