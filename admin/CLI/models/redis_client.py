@@ -1,5 +1,20 @@
 import redis
 
+
+# An exception class used to handle errors related to the Redis model if values are None, or other cases if needed.
+class RedisException(Exception):
+    def __init__(self, message: str):
+        """
+        Initialize a custom exception with the of the failed redis command
+        
+        :param message: Message to pass
+        :type message: str
+        """
+        self.message = message
+        super().__init__(self.message)
+
+    def __str__(self):
+        return f"RedisException: a redis command failed with message'{self.message}'"
 # Model class (singleton) for interacting with the Redis server.
 # This class wraps alot of the built in redis SDK functions
 # With the benefit of being a singleton, better access control, and preventing callers 
@@ -94,18 +109,17 @@ class Redis_Client:
             raise RedisException("KEYS command returned 'None'")
         
         return result
-    
-# An exception class used to handle errors related to the Redis model if values are None, or other cases if needed.
-class RedisException(Exception):
-    def __init__(self, message: str):
+    # "del" keyword was taken :(
+    def delete(self, key):
         """
-        Initialize a custom exception with the of the failed redis command
+        Deletes a key from a Redis database and returns the result.
         
-        :param message: Message to pass
-        :type message: str
+        :param key: The key of the data that you want to delete from the database
+        :return: The result of the deletion operation
         """
-        self.message = message
-        super().__init__(self.message)
+        result = self.db.delete(key)
 
-    def __str__(self):
-        return f"RedisException: a redis command failed with message'{self.message}'"
+        if(result is None):
+            raise RedisException("DEL command returned 'None'")
+        
+        return result
