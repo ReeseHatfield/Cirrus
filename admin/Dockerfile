@@ -9,4 +9,4 @@ EXPOSE 6379
 
 COPY . .
 
-CMD ["python", "admin_cli.py"]
+CMD ["python", "-m" ,"CLI.interface.admin_cli"]

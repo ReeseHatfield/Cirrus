@@ -1,4 +1,4 @@
-import redis_controller
+from CLI.controllers import redis_controller
 import getpass
 
 def list_users():
