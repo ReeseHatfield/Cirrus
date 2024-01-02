@@ -7,7 +7,7 @@ import redis
 class Redis_Client:
 
     _instance = None
-    db = redis.StrictRedis(host='localhost', port=6379, db=0)
+    db = redis.StrictRedis(host='host.docker.internal', port=6379, db=0)
 
     
     def __init__(self):

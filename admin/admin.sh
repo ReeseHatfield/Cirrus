@@ -14,6 +14,6 @@ docker build -t admin-cli .
 
 # run in interactivity mode
 # 6380 bc 6379 already runs redis on "host"
-docker run -it -p 6380:6379 admin-cli
-
+# docker run -it -p 6380:6379 admin-cli
+docker run -it --network bridge -p 6380:6379 admin-cli
 
