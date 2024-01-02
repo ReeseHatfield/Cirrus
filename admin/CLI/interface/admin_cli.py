@@ -2,7 +2,9 @@ from CLI.controllers import redis_controller
 import getpass
 
 def list_users():
-    print(redis_controller.get_all_users())
+    users = redis_controller.get_all_users()
+    # this needs to be put into a more readable format
+    print(users)
 
 def add_user():
     user_name = input("What is the user's name? ")
@@ -18,6 +20,12 @@ def get_user_info():
     user_name = input("What is the name of the user? ")
     print(redis_controller.get_user(user_name))
 
+def change_user_password():
+    user_name = input("What is the name of the user who you want to change the password? ")
+    pass_word = getpass.getpass("What is the new password? ")
+    
+    redis_controller.change_password(user_name, pass_word)
+
 def exit_cli():
     exit()
 
@@ -26,7 +34,8 @@ func_table = {
     2: add_user,
     3: remove_user,
     4: get_user_info,
-    5: exit_cli,
+    5: change_user_password,
+    6: exit_cli,
 }
 
 
