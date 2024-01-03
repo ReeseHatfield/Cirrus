@@ -1,5 +1,33 @@
 # Version History 
 
+
+## Release 1.1: January 3, 2024
+
+### Summary:
+Cirrus primary database has been ported over to use Redis. Admin CLI rebuilt from ground up with Python
+
+### Added:
+- Several new CLI options
+- Redis database
+
+### Changed:
+- Old Admin console menu options
+- authenicateUser endpoint now uses the Redis SDK for node instead of the database.json file
+
+### Deprecated
+- Old admin CLI
+
+### Removed
+- None
+### Issues Fixed:
+- [resolves #5](https://github.com/ReeseHatfield/Cirrus/issues/5)
+- [resolves #7](https://github.com/ReeseHatfield/Cirrus/issues/7)
+- [resolves #9](https://github.com/ReeseHatfield/Cirrus/issues/9)
+
+### Future changes:
+- None ATM
+
+
 ## Release 1.0: December 24, 2023
 
 ### Summary:
