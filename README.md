@@ -58,8 +58,8 @@ Clone the repo and set up the server:
 ```bash
 git clone https://github.com/ReeseHatfield/Cirrus.git
 cd Cirrus
-docker compose build
-docker compose up
+chmod +x cirrus.sh
+./cirrus.sh
 ```
 
 When you begin, the default username and password are `Admin` and `admin` To fix this and to add other users, we can go into the /admin directory. Run `sudo admin.sh` inside the admin folder. From here, you can add your own custom users and remove `Admin`. Cirrus will detect any background changes and now have a new user added
