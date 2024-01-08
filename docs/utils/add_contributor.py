@@ -13,7 +13,7 @@ def add_contributor():
     write_name_to_file(PR_AUTHOR)
 
 
-
+# Test changes 1
 
 
 def write_name_to_file(string: str):
