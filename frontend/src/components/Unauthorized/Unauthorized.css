@@ -1,0 +1,24 @@
+.unauthorized-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffcccc;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body{
+    z-index: 999;
+}
+
+.unauthorized-container h1 {
+    color: #d80000;
+    margin-bottom: 10px;
+}
+
+.unauthorized-container p {
+    color: #333;
+}
