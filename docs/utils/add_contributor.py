@@ -13,7 +13,6 @@ def add_contributor():
 
 # Test changes 1
 # Test changes 2
-# Test changes 3
 
 
 def write_name_to_file(string: str):
