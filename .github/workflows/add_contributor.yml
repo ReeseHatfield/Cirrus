@@ -34,4 +34,5 @@ jobs:
           git config --global user.name "ReeseHatfield"
           git add --all
           git commit -m "Add contributor ${PR_AUTHOR}"
-          git -c http.extraHeader="AUTHORIZATION: basic $(echo -n x-access-token:${PERSONAL_ACCESS_TOKEN} | base64)" push origin HEAD:main
+          git remote set-url origin https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/ReeseHatfield/Cirrus.git
+          git push origin HEAD:main
