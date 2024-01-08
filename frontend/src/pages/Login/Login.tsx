@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import Modal from 'react-modal';
+import { Unauthorized } from '../../components/Unauthorized/Unauthorized';
 
 import './Login.css';
 
@@ -51,6 +52,28 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
         }
     };
 
+
+    const modalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            maxWidth: '500px', 
+            maxHeight: '5000px',
+            padding: '20px', 
+            border: '1px solid #ccc',
+            borderRadius: '4px', 
+        },
+        overlay: {
+            zIndex: 1000,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)' // Optional, for semi-transparent overlay
+        }
+    };
+    
+
     return (
 
         <>
@@ -58,11 +81,17 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
             <div className='red-haze'></div>
             <div className='content'>
                 <h2>Cirrus</h2>
+
                 <Modal 
                     isOpen={modelIsOpen}
                     onRequestClose={closeModal}
+                    style={modalStyles}
                 >
-                    Unauthorized Username or Password!
+                    <Unauthorized 
+                        message='Unauthorized Username or Password'
+                        buttonAction={closeModal}
+                        buttonMessage='Back'
+                    />
                 </Modal>
                 <form className='login-form' onSubmit={handleSubmit}>
                     <div>

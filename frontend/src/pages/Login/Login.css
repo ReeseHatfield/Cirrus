@@ -47,7 +47,7 @@ form {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     border-radius: 10px; 
     border: 4px solid #d40000; 
-    animation: partialFadeIn 4.0s ease-in-out;
+    animation: partialFadeIn 2.5s ease-in-out;
     animation-delay: 1.0;
 }
 
@@ -98,7 +98,7 @@ TextField {
     transform: scale(1.03); 
 }
 
-Modal {
+.ReactModal {
     background: white;
     padding: 20px;
     border-radius: 5px;
@@ -144,6 +144,7 @@ Modal {
 
 .login-form{
     opacity: 75%;
+    z-index: 100;
 }
 
 .fullscreen-bg {
@@ -163,12 +164,11 @@ Modal {
     animation: fadeIn 1s ease-out forwards;
 }
 
+
+
 .content {
     position: relative;
     z-index: 10; 
-
-
-
 }
 
 @keyframes slideUp {
@@ -193,9 +193,9 @@ body, html {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0;  
     background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
-    animation: fadeInHaze 5s ease-in-out forwards, partialFadeIn;
+    animation: fadeInHaze 0s ease-in-out forwards, partialFadeIn;
 
 }
 
