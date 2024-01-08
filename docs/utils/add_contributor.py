@@ -13,6 +13,9 @@ def add_contributor():
     write_name_to_file(PR_AUTHOR)
 
 
+#New test
+
+
 
 def write_name_to_file(string: str):
     with open(FILE_PATH, 'a') as credits:
