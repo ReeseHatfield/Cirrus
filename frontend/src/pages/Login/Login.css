@@ -139,7 +139,7 @@ Modal {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('../../../public/cirrus.png') no-repeat center center fixed;
+    background: url('cirrus.png') no-repeat center center fixed;
     background-size: cover;
     opacity: 0;
     animation: fadeIn 1s ease-out 1s forwards;
