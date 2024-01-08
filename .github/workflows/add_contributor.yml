@@ -18,6 +18,9 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Change File Permissions
+        run: chmod +x docs/utils/add_contributor.py
+
       - name: Run Python Script
         env:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
