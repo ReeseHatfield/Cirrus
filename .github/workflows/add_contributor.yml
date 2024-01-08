@@ -31,6 +31,6 @@ jobs:
           git config --global user.name "ReeseHatfield"
           git config --global user.email "hatfield.69@wright.edu"
 
-          git add -A
-          git commit -m "commit message"
+          git add --all
+          git commit -m "Add contributor ${PR_AUTHOR}"
           git push
