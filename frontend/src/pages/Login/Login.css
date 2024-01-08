@@ -16,17 +16,25 @@ body {
     to { opacity: 1; }
 }
 
+
+@keyframes partialFadeIn {
+    from { opacity: 0%; }
+    to { opacity: 80%; }
+}
+
 h2 {
-    color: #ba0101; 
-    font-size: 24px; 
+    color: #000000; 
+    font-size: 60px; 
+    font-style: italic;
     text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 30px;
     font-weight: 600; 
-    animation: slideDown 0.5s ease-in-out;
+    animation: slideDown 1.0s ease-in-out;
 }
 
 @keyframes slideDown {
-    from { transform: translateY(-20px); }
+    from { transform: translateY(-40px); }
     to { transform: translateY(0); }
 }
 
@@ -39,7 +47,8 @@ form {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     border-radius: 10px; 
     border: 4px solid #d40000; 
-    animation: popIn 0.6s ease-in-out;
+    animation: partialFadeIn 4.0s ease-in-out;
+    animation-delay: 1.0;
 }
 
 @keyframes popIn {
@@ -133,21 +142,33 @@ Modal {
     transform: scale(1.05); 
 }
 
+.login-form{
+    opacity: 75%;
+}
+
 .fullscreen-bg {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+
     background: url('cirrus.png') no-repeat center center fixed;
-    background-size: cover;
+    background-size: 50%;
     opacity: 0;
-    animation: fadeIn 1s ease-out 1s forwards;
+    animation: fadeIn 1s ease-out forwards;
 }
 
 .content {
     position: relative;
     z-index: 10; 
+
+
+
 }
 
 @keyframes slideUp {
@@ -158,5 +179,31 @@ Modal {
 @keyframes bgFadeIn {
     to {
         opacity: 1;
+    }
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.red-haze {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
+    animation: fadeInHaze 5s ease-in-out forwards, partialFadeIn;
+
+}
+
+@keyframes fadeInHaze {
+    0% {
+        background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
+    }
+    100% {
+        background: linear-gradient(to right, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0.5));
     }
 }

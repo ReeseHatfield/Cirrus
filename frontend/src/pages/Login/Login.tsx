@@ -55,15 +55,16 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
 
         <>
             <div className="fullscreen-bg"></div>
+            <div className='red-haze'></div>
             <div className='content'>
-                <h2>Login</h2>
+                <h2>Cirrus</h2>
                 <Modal 
                     isOpen={modelIsOpen}
                     onRequestClose={closeModal}
                 >
                     Unauthorized Username or Password!
                 </Modal>
-                <form onSubmit={handleSubmit}>
+                <form className='login-form' onSubmit={handleSubmit}>
                     <div>
                         <Typography component="h2" variant="h5">
                             Username
