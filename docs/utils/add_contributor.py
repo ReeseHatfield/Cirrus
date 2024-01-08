@@ -14,6 +14,7 @@ def add_contributor():
 
 
 # Test changes 1
+# Test changes 2
 
 
 def write_name_to_file(string: str):
