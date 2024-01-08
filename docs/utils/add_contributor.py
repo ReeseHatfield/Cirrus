@@ -2,7 +2,7 @@
 
 import os
 
-FILE_PATH = '../Credits.md'
+FILE_PATH = 'docs/Credits.md'
 PR_AUTHOR = os.getenv('PR_AUTHOR')
 
 
@@ -12,8 +12,6 @@ PR_AUTHOR = os.getenv('PR_AUTHOR')
 def add_contributor():
     write_name_to_file(PR_AUTHOR)
 
-
-#New test
 
 
 
