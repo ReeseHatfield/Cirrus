@@ -6,10 +6,6 @@ FILE_PATH = 'docs/Credits.md'
 PR_AUTHOR = os.getenv('PR_AUTHOR')
 
 
-# -----FORMAT------
-# - **[{FULLNAME}](https://github.com/{USERNAME})** - {PRs FROM USER}
-
-
 def contains_string(file_path, search_string):
     try:
         with open(file_path, 'r') as file:
@@ -29,6 +25,10 @@ def add_contributor():
 
     write_name_to_file(PR_AUTHOR)
 
+
+# -----FORMAT------
+# - **[{FULLNAME}](https://github.com/{USERNAME})** - {PRs FROM USER}
+    
 def format_name(name: str):
     return f'- **[{name}](https://github.com/{name})** - [See Contributions](https://github.com/ReeseHatfield/Cirrus/pulls/{name})'
 

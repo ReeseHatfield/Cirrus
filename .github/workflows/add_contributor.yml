@@ -32,5 +32,14 @@ jobs:
           git config --global user.email "hatfield.69@wright.edu"
 
           git add --all
-          git commit -m "Add contributor ${PR_AUTHOR}"
-          git push
+
+          # check for any changes
+          git diff --staged --exit-code
+          changes=$?
+
+          if [ $changes -ne 0 ]; then
+            git commit -m "Add contributor ${PR_AUTHOR}"
+            git push
+          else
+            echo "No changes to commit"
+          fi
