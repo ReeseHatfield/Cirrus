@@ -1,5 +1,35 @@
 # Version History 
 
+## Release 1.2: January83, 2024
+
+### Summary:
+Enhanced build pipeline and better login styling
+
+### Added:
+- cirrus.sh
+- cirrus.bat
+- Modular Unauthorized Modal
+
+### Changed:
+- Styling of Login.tsx
+
+### Deprecated
+- None
+
+### Removed
+- None
+- 
+### Issues Fixed:
+- [resolves #13](https://github.com/ReeseHatfield/Cirrus/issues/13)
+- [resolves #15](https://github.com/ReeseHatfield/Cirrus/issues/15)
+- [resolves #16](https://github.com/ReeseHatfield/Cirrus/issues/16)
+- [resolves #17](https://github.com/ReeseHatfield/Cirrus/issues/17)
+- [resolves #18](https://github.com/ReeseHatfield/Cirrus/issues/18)
+
+
+### Future changes
+Hopefully, in 1.3, the alert issue will be fixed. That is the plan as of 1/8
+
 
 ## Release 1.1: January 3, 2024
 
