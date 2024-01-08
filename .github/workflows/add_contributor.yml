@@ -30,6 +30,6 @@ jobs:
         run: |
           git config --global user.email "hatfield.69@wright.edu"
           git config --global user.name "ReeseHatfield"
-          git add Credits.md
+          git add --all
           git commit -m "Add contributor ${PR_AUTHOR}"
           git push
