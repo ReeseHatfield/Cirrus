@@ -26,13 +26,11 @@ jobs:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: docs/utils/add_contributor.py
 
-      - name: Commit and Push Changes
-        env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Commit and push changes
         run: |
-          git config --global user.email "hatfield.69@wright.edu"
           git config --global user.name "ReeseHatfield"
-          git add --all
-          git commit -m "Add contributor ${PR_AUTHOR}"
-          git remote set-url origin https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/ReeseHatfield/Cirrus.git
-          git push origin HEAD:main
+          git config --global user.email "hatfield.69@wright.edu"
+
+          git add -A
+          git commit -m "commit message"
+          git push
