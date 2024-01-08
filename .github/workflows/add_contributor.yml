@@ -25,3 +25,11 @@ jobs:
         env:
           PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: docs/utils/add_contributor.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "hatfield.69@wright.edu"
+          git config --global user.name "ReeseHatfield"
+          git add Credits.md
+          git commit -m "Add contributor ${PR_AUTHOR}"
+          git push
