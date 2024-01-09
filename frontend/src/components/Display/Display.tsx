@@ -6,6 +6,8 @@ import MkDirModal from '../MkDirModal/MkDirModal';
 import Root from '../Root/Root';
 import Tree from '../Tree/Tree';
 import FileUpload from '../FileUpload/FileUpload';
+import Modal from 'react-modal';
+import Unauthorized from '../Unauthorized/Unauthorized';
 
 import './Display.css'
 
@@ -20,6 +22,10 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
     const [isSending, setIsSending] = useState(false);
     const [selectedFile, setSelectedFile] = useState<{ name: string, isDirectory: boolean } | null>(null);
 
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const closeModal = () => setModalIsOpen(false);
+    const openModal = () => setModalIsOpen(true);
+
     const fetchData = useCallback(() => {
         fetch(`${backendPoint}/api/ls`, {
             method: 'POST',
@@ -30,9 +36,8 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
         }).then(response => {
 
             if(response.status === 500){
-                alert("Session expired. Please sign in again...")
-
-                navigate("/login");
+                setModalIsOpen(true);
+                // navigate('/login');
             }
 
             if (!response.ok) {
@@ -107,32 +112,69 @@ const Display = ({ backendPoint, sessionID }: displayProps) => {
     };
 
 
-
-    return (
+    return ( 
         <div className='display'>
+            <div className="modal">{getModalOverlay(modalIsOpen, closeModal, () => {navigate('/login')})}</div>
             <Tree backendPoint={backendPoint}></Tree>
             <div>
                 <span className='bar'>
                     <Back backendPoint={backendPoint} fetchData={fetchData} />
                     <Root backendPoint={backendPoint} fetchData={fetchData} />
                 </span>
-                    <div>
-                        <Directory
-                            sessionID={sessionID}
-                            backEndPoint={backendPoint}
-                            data={data} 
-                            onFileClick={handleFileClick} 
-                            onFileDoubleClick={handleFileDoubleClick} 
-                        />
-                    </div>
+                <div>
+                    <Directory
+                        sessionID={sessionID}
+                        backEndPoint={backendPoint}
+                        data={data} 
+                        onFileClick={handleFileClick} 
+                        onFileDoubleClick={handleFileDoubleClick} 
+                    />
+                </div>
                 <span className='bar'>    
                     <MkDirModal backendPoint={backendPoint} fetchData={fetchData}></MkDirModal>
                     <FileUpload backendPoint={backendPoint} sessionID={sessionID} />
                 </span>
             </div>
-
         </div>
     );
+}
+
+
+
+const getModalOverlay = (isOpen, closeModalFunc, btnAction) => {
+    const modalStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            maxWidth: '500px', 
+            maxHeight: '5000px',
+            padding: '20px', 
+            border: '1px solid #ccc',
+            borderRadius: '4px', 
+        },
+        overlay: {
+            zIndex: 1000,
+            backgroundColor: 'rgba(0, 0, 0, 0.75)'
+        }
+    };
+
+    return (
+        <Modal 
+            isOpen={isOpen}
+            onRequestClose={closeModalFunc}
+            style={modalStyles}
+        >
+            <Unauthorized 
+                message='Unauthorized Username or Password'
+                buttonAction={btnAction}
+                buttonMessage='Back'
+            />
+        </Modal>
+    )
 }
 
 export default Display;

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import FileUpload from '../components/FileUpload/FileUpload';
-import Display from '../components/Display/Display';
+import FileUpload from '../../components/FileUpload/FileUpload';
+import Display from '../../components/Display/Display';
 import { useLocation } from 'react-router-dom';
 
 
@@ -16,7 +16,8 @@ export const Home = ({ backEndPoint }: homeProps) => {
 
     return (
         <>
-            <div>
+            <div className="fullscreen-bg"></div>
+            <div className='content'>
                 <Display backendPoint={backEndPoint} sessionID={sessionID} />
             </div>
         </>
