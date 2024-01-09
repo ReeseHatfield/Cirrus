@@ -54,7 +54,7 @@ def format_name(name: str):
     Format the contributor's name as a markdown link with a reference to their contributions.
 
     Args:
-    name (str): The GitHub username of the contributor.
+    name (str): The GitHubj username of the contributor.
 
     Returns:
     str: The formatted markdown string containing the contributor's name and links

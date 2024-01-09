@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import Modal from 'react-modal';
-import { Unauthorized } from '../../components/Unauthorized/Unauthorized';
+import Unauthorized from '../../components/Unauthorized/Unauthorized';
 
 import './Login.css';
 
