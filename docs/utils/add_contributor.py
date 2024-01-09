@@ -78,6 +78,7 @@ def write_name_to_file(name: str):
 
     with open(FILE_PATH, 'a') as credits:
         credits.writelines(line)
+        credits.writelines('\n')
 
 
 if __name__ == "__main__":

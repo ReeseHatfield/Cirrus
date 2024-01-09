@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import File from '../File/File';
-import { Typography } from '@mui/material';
+import { Typography, colors } from '@mui/material';
 
 interface listProps {
     data: string;
@@ -31,7 +31,8 @@ const Directory = ({ data, onFileClick, onFileDoubleClick, backEndPoint, session
 
     return (
         <>
-            <Typography component="h2" variant="h5">File List</Typography>
+            {/* TODO: make this get request ot the wd */}
+            <h2 style={{color: 'white'}}>File List</h2>
             <ul>
                 {
                 files.filter((file: any) => file.name !== '/backend/cirrus/.gitRootPlaceholder').map((file: any, index) => (

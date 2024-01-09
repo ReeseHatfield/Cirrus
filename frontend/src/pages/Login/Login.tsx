@@ -80,7 +80,7 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
             <div className="fullscreen-bg"></div>
             <div className='red-haze'></div>
             <div className='content'>
-                <h2>Cirrus</h2>
+                <h1 className='header'>Cirrus</h1>
 
                 <Modal 
                     isOpen={modelIsOpen}

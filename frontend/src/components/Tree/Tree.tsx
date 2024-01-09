@@ -39,13 +39,11 @@ export const Tree = ({ backendPoint }: treeProps) => {
 
 
     const paragraphs = treeData.split('\n').map((line, index) => (
-
         <Fragment key={index}>
             {line}
             <br/>
         </Fragment>
     ));
-
     
     return <div className='tree'>{paragraphs}</div>;
 
