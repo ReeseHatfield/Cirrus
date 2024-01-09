@@ -38,7 +38,7 @@ jobs:
           changes=$?
 
           if [ $changes -ne 0 ]; then
-            git commit -m "Add contributor ${PR_AUTHOR}"
+            git commit -m "Add contributor $PR_AUTHOR"
             git push
           else
             echo "No changes to commit"

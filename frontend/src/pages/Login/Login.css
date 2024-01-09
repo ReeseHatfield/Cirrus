@@ -147,6 +147,19 @@ TextField {
     z-index: 100;
 }
 
+
+.content h1 {
+	-webkit-text-stroke: 1px #000000 !important;
+    color: #ffffff; 
+    font-size: 80px; 
+    font-style: italic;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 30px;
+    font-weight: 600; 
+    animation: slideDown 1.0s ease-in-out;
+}
+
 .fullscreen-bg {
     position: fixed;
     display: flex;
@@ -158,9 +171,10 @@ TextField {
     height: 100%;
 
 
-    background: url('cirrus.png') no-repeat center center fixed;
+    background: url('background.webp') no-repeat center center fixed;
+    background-color: #171717;
     background-size: 50%;
-    opacity: 0;
+    opacity: 1;
     animation: fadeIn 1s ease-out forwards;
 }
 

@@ -8,7 +8,7 @@ interface unauthorizedProps{
     buttonMessage: string
 }
 
-export const Unauthorized = ({ message, buttonAction, buttonMessage }: unauthorizedProps) => {
+const Unauthorized = ({ message, buttonAction, buttonMessage }: unauthorizedProps) => {
 
     return (
         <div className='unauthorized-container'>
@@ -19,3 +19,6 @@ export const Unauthorized = ({ message, buttonAction, buttonMessage }: unauthori
         </div>
     )
 }
+
+
+export default Unauthorized;

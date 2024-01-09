@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {NavigateFunction, useNavigate} from 'react-router-dom';
 import Modal from 'react-modal';
-import { Unauthorized } from '../../components/Unauthorized/Unauthorized';
+import Unauthorized from '../../components/Unauthorized/Unauthorized';
 
 import './Login.css';
 
@@ -80,7 +80,7 @@ const LoginPage = ( {backEndPoint }: loginProps ) => {
             <div className="fullscreen-bg"></div>
             <div className='red-haze'></div>
             <div className='content'>
-                <h2>Cirrus</h2>
+                <h1 className='header'>Cirrus</h1>
 
                 <Modal 
                     isOpen={modelIsOpen}
