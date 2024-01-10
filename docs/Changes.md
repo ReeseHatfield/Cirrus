@@ -82,6 +82,7 @@ I'm really happy to present the first public release of Cirrus. It supports most
 ### Future changes:
 - Administrator CLI should run in docker container
 
-
+### New change:
+- Braden Pennie will be added as a new contributor following a beautiful git workflow
 
 
