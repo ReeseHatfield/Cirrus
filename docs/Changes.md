@@ -1,6 +1,30 @@
 # Version History 
 
-## Release 1.2: January83, 2024
+## Release 1.3 January 16, 2024
+
+### Summary:
+- Smoother feel
+- Alert fixes
+- Enhanced Graphics
+
+### Added:
+- None
+
+### Changed:
+- Old Logo now cleaner
+- Login.css now feels more cohesive
+  
+### Deprecated:
+- None
+
+### Removed:
+- None
+
+### Issues Fixed:
+- [resolves #14](https://github.com/ReeseHatfield/Cirrus/issues/14)
+- [resolves #8](https://github.com/ReeseHatfield/Cirrus/issues/8)
+
+## Release 1.2: January 3, 2024
 
 ### Summary:
 Enhanced build pipeline and better login styling
