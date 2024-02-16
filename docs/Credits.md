@@ -8,3 +8,5 @@ This project would not have been possible without the use of the following peopl
 - **[Reese Hatfield](https://github.com/ReeseHatfield)** - Project Author
 - **[Nathan Weiland](https://github.com/NathanWeiland10)** - Graphics
 
+
+- **[dependabot[bot]](https://github.com/dependabot[bot])** - [See Contributions](https://github.com/ReeseHatfield/Cirrus/pulls/dependabot[bot])
