@@ -24,7 +24,6 @@ To begin using Cirrus, you'll need:
 - A server (AWS works fine, but your own server works best)
 - Static IP or Dynamic DNS Service
 - Docker
-- NodeJS and Typescript*
 - Firewall configured
 
 ### Server
@@ -69,7 +68,7 @@ Note: In the current version, you need Node and Typescript installed locally for
 
 ## Visiting the server
 To test if the server is running, you can navigate to `localhost:5173`. To access your Cirrus from another device, you'll need the server's public IP address. This can be obtained using `curl api.ipify.org`. (A server port map can be viewed [here](https://github.com/ReeseHatfield/Cirrus/blob/main/docs/Usage.md#port-mapping-table)) Visit this IP in any web browser to access the Cirrus UI. 
-
+If that doesn't work, try `ifconfig` and find it manually from there
 ![Example screenshot of Cirrus](./frontend/public/example.png)
 
 Through the UI, you can upload and download files from your server, all facilitated by a user-friendly web-based GUI, eliminating the need for SSH or other third-party software.
