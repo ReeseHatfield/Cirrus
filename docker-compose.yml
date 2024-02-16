@@ -49,6 +49,7 @@ services:
     networks: 
     - global_network
     tty: true
+    # command: /bin/sh -c "echo 'Nginx service is running at IP address:'; hostname -i"
 
   redis:
     build: ./redis
