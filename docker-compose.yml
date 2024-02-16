@@ -1,4 +1,10 @@
 version: '3.8'
+
+networks:
+  global_network:
+    driver: overlay
+    attachable: true
+
 services:
   backend:
     build: ./backend
@@ -9,7 +15,10 @@ services:
       - /backend/node_modules 
     environment:
       - NODE_ENV=development 
-    restart: unless-stopped 
+    restart: unless-stopped
+    networks: 
+    - global_network
+    tty: true
 
   frontend:
     build: ./frontend
@@ -23,6 +32,9 @@ services:
     restart: unless-stopped 
     depends_on:
       - backend 
+    networks: 
+    - global_network
+    tty: true
 
   nginx:
     image: nginx:latest
@@ -34,6 +46,9 @@ services:
       - frontend
       - backend
     restart: unless-stopped
+    networks: 
+    - global_network
+    tty: true
 
   redis:
     build: ./redis
@@ -43,3 +58,6 @@ services:
       - ./redis/data:/data
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     restart: unless-stopped
+    networks: 
+    - global_network
+    tty: true

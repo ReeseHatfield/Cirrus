@@ -1,7 +1,9 @@
 #!/bin/bash
+docker swarm init
 
+docker network prune
 # take down any current services
-docker compose down
+docker-compose down --remove-orphans
 
 # rebuild all
 sudo docker compose build
