@@ -7,8 +7,8 @@ import { createClient } from "redis";
 
 export const authenticateUser = async (req: Request, res: Response) => {
     
-    const client = await createClient({
-        url: 'redis://host.docker.internal:6379'
+    const client = await createClient({//
+        url: 'redis://redis:6379' // how do I do this???
     }).on('error', err => console.log("Redis Client Error")).connect();
 
 
