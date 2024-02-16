@@ -48,7 +48,7 @@ def add_contributor():
 
 # -----FORMAT------
 # - **[{FULLNAME}](https://github.com/{USERNAME})** - {PRs FROM USER}
-    
+
 def format_name(name: str):
     """
     Format the contributor's name as a markdown link with a reference to their contributions.
@@ -76,9 +76,11 @@ def write_name_to_file(name: str):
     """
     line = format_name(name)
 
-    with open(FILE_PATH, 'a') as credits:
-        credits.writelines(line)
-        credits.writelines('\n')
+    with open(FILE_PATH, 'a+') as credits:
+        credits.seek(0, os.SEEK_END) 
+        if credits.tell() > 0 and credits.read(1) != '\n':
+            credits.write('\n')  
+        credits.write(line + '\n')
 
 
 if __name__ == "__main__":

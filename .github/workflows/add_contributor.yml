@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [closed]
 
+permissions:
+  contents: write
+
 jobs:
   run-script:
     if: github.event.pull_request.merged == true
@@ -28,18 +31,12 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          # config user name
           git config --global user.name "ReeseHatfield"
           git config --global user.email "hatfield.69@wright.edu"
 
           git add --all
 
-          # check for any changes
-          git diff --staged --exit-code
-          changes=$?
-
-          if [ $changes -ne 0 ]; then
-            git commit -m "Add contributor $PR_AUTHOR"
-            git push
-          else
-            echo "No changes to commit"
-          fi
+          # commit and push
+          git commit -m "Add contributor $PR_AUTHOR"
+          git push

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/reesehatfield/cirrus">
-    <img src="./frontend/public/cirrus.png" alt="Cirrus Logo" width="400" height="370">
+    <img src="./frontend/public/Logo.png" alt="Cirrus Logo" width="400" height="370">
   </a>
 </p>
 
