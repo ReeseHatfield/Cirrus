@@ -16,9 +16,9 @@ export const fs = new FileSystem();
 /**
  * `getFilesInWorkingDir` retrieves the files in the working directory and sends the
  * response to the client, handling any errors that occur.
- * @param {Request} req - The `req` parameter represents the HTTP request object, which contains
+ * @param {Request} req -  HTTP request object, which contains
  * information about the incoming request such as headers, query parameters, and request body.
- * @param {Response} res - The `res` parameter is the response object that is used to send the response
+ * @param {Response} res - HTTP response object that is used to send the response
  * back to the client. It contains methods and properties that allow you to control the response, such
  * as setting the status code, headers, and sending the response body.
  * @returns a JSON response containing the `responseFiles` array.
@@ -44,9 +44,15 @@ export const getFilesInWorkingDir = (req: Request, res: Response) => {
     }
 }
 
+/**
+ * `tree` retrieves the files in the root directory and sends the
+ * tree formed output to the client, handling any errors that occur.
+ * @param {Request} req HTTP request object that contains user info
+ * @param {Request} res HTTP response object that contains status codes, and tree string
+ */
 export const tree = (req: Request, res: Response) =>{
     try{
-        
+        // execute tree command on cirrus directory
         exec('tree cirrus', (err, stdout, stderr) =>{
 
             if(err || stderr){
@@ -56,7 +62,7 @@ export const tree = (req: Request, res: Response) =>{
                 })
             }
             
-
+            //return the standard output of tree command
             res.status(StatusCodes.OK).json({
                 stdout
             })
@@ -86,7 +92,6 @@ export const tree = (req: Request, res: Response) =>{
  */
 export const deleteFile = (req: Request, res: Response) => {
     try{
-
         console.log(JSON.stringify(req.body));
         const sessionID = req.body.sessionId;
         if(!verifySessionID(sessionID)){
@@ -104,7 +109,10 @@ export const deleteFile = (req: Request, res: Response) => {
             });
         }
         else{
-            throw Error;
+            console.log("Error deleting file");
+            res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                message: "Error deleting file",
+            })
         }
         
     }
@@ -162,17 +170,13 @@ export const getWorkingDir = (req: Request, res: Response) => {
 }
 
 /**
- * `changeDirectory` takes a request and response object, checks the validity of the
+ * `changeDirectory` checks the validity of the
  * request data, attempts to change the directory using the provided name and isDirectory values, and
  * sends an appropriate response based on the success or failure of the operation.
- * @param {Request} req - The `req` parameter is an object representing the HTTP request made to the
- * server. It contains information such as the request headers, request body, request method, and
- * request URL.
- * @param {Response} res - The `res` parameter is the response object that is used to send the response
- * back to the client. It contains methods and properties that allow you to control the response, such
- * as setting the status code, sending JSON data, or redirecting the client to another URL.
- * @returns a response object with a JSON payload. The payload contains a message indicating the
- * success or failure of the directory change operation. 
+ * @param {Request} req - HTTP request object containing the name of the directory, which is 
+ * parsed as a File object
+ * @param {Response} res - HTTP response object containg a status code 
+ * @returns a response object with a JSON payload indicating the success of the directory change 
  */
 export const changeDirectory = (req: Request, res: Response) => {
 
@@ -188,7 +192,6 @@ export const changeDirectory = (req: Request, res: Response) => {
         const success = fs.changeDirectory({ name, isDirectory});
 
         if(success){
-            //note: this could still mean that they cd .. from root
             res.json({
                 message: 'Directory changed sucessfully'
             });
@@ -204,7 +207,6 @@ export const changeDirectory = (req: Request, res: Response) => {
             error: error.message
         });
     }
-
 }
 
 export const changeDirectoryToRoot = (req: Request, res: Response) => {
@@ -223,7 +225,7 @@ export const changeDirectoryToRoot = (req: Request, res: Response) => {
     }
 }
 
-//File upload and download do not directly modify the FileSystem Wrapper
+
 
 /**
  * `uploadFile` handles the uploading of a file and returns a response with the uploaded
