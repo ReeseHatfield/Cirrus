@@ -37,7 +37,6 @@ app.listen(port, () => {
 function config(app: Application): Application {
   app.use(cors({
     origin: frontEndPoint,
-    
   }));
   
   app.use(function(req, res, next) {
